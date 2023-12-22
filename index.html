@@ -1,89 +1,110 @@
-document.addEventListener('DOMContentLoaded', function () {
-// const apiKey = 'PCnaFUbdL2cyfZ9dOrSdTzmUCpv8jH7deTK72lpe';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASA Daily Images</title>
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body class="body">
+    <main class="main">
+        <img 
+            src="imgs/milkyWayOpeningImg.jpg"  
+            alt="milky way opening background image" 
+            class="opening-img"/>
+        <div class="opening-text-container">
+            <h2>Discover More</h2>
+            <h1>NASA DATA LIBRARY</h1>
+        </div>
 
-// const factor = 'andromeda'
-
-const mainFunction = function(factor, collectionNum){
-    const apiUrl = `https://images-api.nasa.gov/search?q=${factor}`
-    fetch(apiUrl)
-    .then(response => response.json())
-    .then(data => { 
-        updateDOM(data);
-        addEventListenersToSamples(data)
-    })
-    .catch(error => {
-        console.error('Error fetching data from NASA API:', error);
-    });
-    
-    function updateDOM(data) {
-        // 
-        // 
-        // 
-        // 
-        totalItems = (data.collection.items).length
-        let sample = ``
-        // let topLevel = data.collection.items
-        // alert( )
-        for(let i = 0; i < totalItems; i++){
-            sample += ` 
-            <div class="sample item-${i}">           
-                <img src="${data.collection.items[i].links[0].href}" />
-                <div class="sample-title-wrapper">
-                    <h2>${data.collection.items[i].data[0].title}</h2>
-                </div>
-                <br />
+        <section class="options-menu">
+            <div class="theme collection-1">
+                <img 
+                    src="imgs/thumbnail-andromeda.jpg" 
+                    alt="Thumbail Theme Image, Andromeda Galaxy" 
+                    class="theme-thumbnail"/>
+                <h3 class="theme-title">Andromeda Galaxy</h3>
             </div>
-            `
-        }
+            <div class="theme collection-2">
+                <img 
+                    src="imgs/thumbnail-earth.jpg" 
+                    alt="Thumbail Theme Image, Planet Earth" 
+                    class="theme-thumbnail"/>
+                <h3 class="theme-title">Planet Earth</h3>
+            </div>
+            <div class="theme collection-3">
+                <img 
+                    src="imgs/thumbnail-supernova.jpg" 
+                    alt="Thumbail Theme Image, Supernova Explosions" 
+                    class="theme-thumbnail"/>
+                <h3 class="theme-title">Nova Explosions</h3>
+            </div>
+        </section>
+    </main>
+    <div class="collection-1-container coll-container">
+            <img src="imgs/x-mark.png" alt="x mark, close window" class="x-mark">
+            <h1>Andromeda Galaxy</h1>
+            <hr class="collection-hr"/>
+            <section class="collection-1-options coll-options">
+            </section>
+            <img src="imgs/thumbnail-andromeda.jpg" class="coll-bg-img" />
+    </div>
+    <div class="collection-2-container coll-container">
+        <img src="imgs/x-mark.png" alt="x mark, close window" class="x-mark">
+        <h1>Planet Eart</h1>
+        <hr class="collection-hr"/>
+        <section class="collection-2-options coll-options">
+        </section>
+        <img src="imgs/thumbnail-andromeda.jpg" class="coll-bg-img" />
+    </div>
+    <!--  -->
+    <div class="general-frame-info-container pop">
+    </div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="backeEnd.js"></script>
+<script>
+
+// theme elements
+const openingImg = document.querySelector('.opening-img')
+const openingTextContainer = document.querySelector('.opening-text-container')
+const optionsMenu = document.querySelector('.options-menu')
+// 
+const collection1Container = document.querySelector('.collection-1-container');
+const collection2Container = document.querySelector('.collection-2-container')
+/**/
+
+const bluringFunction  = function(blurDegree, focusedElement, state){
+    openingImg.style.filter = `blur(${blurDegree}px)`
+    openingTextContainer.style.filter = `blur(${blurDegree}px)`
+    optionsMenu.style.filter = `blur(${blurDegree}px)`
+
+    focusedElement.style.filter = 'blur(0px)'
+    focusedElement.style.display= `${state}`
+
+    }
+    
+    // turn this in to a loop as well
+    document.querySelector('.collection-1').addEventListener('click', ()=>{
+        bluringFunction(50, collection1Container, 'block')
         
-        // alert((data.collection.items).length)
-        // data = ''
+    })
+    document.querySelector('.collection-2').addEventListener('click', ()=>{
+        bluringFunction(50, collection2Container, 'block')
+    } )
 
 
-        const collection01 = document.querySelector(`.collection-${collectionNum}-options`);
-        collection01.innerHTML = `${sample}`
-        }
-        function addEventListenersToSamples(data) {
 
-            const infoFramer  = document.querySelector('.general-frame-info-container')
-            const samples = document.querySelectorAll('.sample');
-            for(let z = 0; z < totalItems; z++){
-        
-            document.querySelector(`.item-${z}`).addEventListener('click', ()=>{
-                infoFramer.innerHTML = `
-                <div class="andromeda-galaxy-info-window info-window">
-                    <img src="imgs/x-mark.png" alt="x mark, close window" class="x-mark-02">
-                    <h1>${data.collection.items[z].data[0].title}</h1>
-        
-                    <img src="${data.collection.items[z].links[0].href}" 
-                        alt=""
-                        class="info-select-img" />
-                    <div class="tool-bar">
-                        
-                    </div>
-                    <p class="">${data.collection.items[z].data[0].description}</p>
-                    
-                    <hr />
-                    <span class="info-date">${data.collection.items[z].data[0].date_created}</span>
-                    <hr />
-        
-                </div> 
-                `
-                infoFramer.style.display = 'block'
-                document.querySelector('.x-mark-02').addEventListener('click', ()=>{
-                    infoFramer.style.display = 'none'
-                })
-        
-            })
-            
-        }
-        }
-        // totalItems = 0
+    // turn this in to a loop
+    const closeBtn = document.querySelectorAll('.x-mark');
 
-}
+    for(let i = 0; i<closeBtn.length ; i++){
+        console.log(closeBtn[i], i)
+        closeBtn[i].addEventListener('click', ()=>{
+            bluringFunction(0, document.querySelector(`.collection-${i+1}-container`), 'none')
+        })
+    }
 
-
-mainFunction('pluto', 1)
-
-mainFunction('supernova', 2)
-});
+</script>
+</html>
