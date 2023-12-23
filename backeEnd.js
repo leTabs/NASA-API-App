@@ -41,7 +41,7 @@ const mainFunction = function(factor, collectionNum){
             // listName ++
 
         }}
-        catch{alert('oppsie')}
+        catch{}
         // alert(listName)
         // alert((data.collection.items).length)
         // data = ''
@@ -91,4 +91,11 @@ const mainFunction = function(factor, collectionNum){
 mainFunction('andromeda', 1)
 mainFunction('pluto', 2)
 mainFunction('supernova', 3)
+mainFunction('mercury', 4)
+mainFunction('venus', 5)
+mainFunction('milky-way', 6)
+mainFunction('solar-system', 7)
+mainFunction('black-hole', 8)
+mainFunction('pulsar', 9)
+mainFunction('uranus', 10)
 // });
