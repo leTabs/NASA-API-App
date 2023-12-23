@@ -39,6 +39,62 @@
                     class="theme-thumbnail"/>
                 <h3 class="theme-title">Nova Explosions</h3>
             </div>
+            
+            <div class="theme collection-4">
+                <img 
+                    src="imgs/thumbnail-mercury.jpg" 
+                    alt="Thumbail Theme Image, Supernova Explosions" 
+                    class="theme-thumbnail"/>
+                <h3 class="theme-title">Planet Mercury</h3>
+            </div>
+
+            <div class="theme collection-5">
+                <img 
+                    src="imgs/thumbnail-venus.jpg" 
+                    alt="Thumbail Theme Image, Supernova Explosions" 
+                    class="theme-thumbnail"/>
+                <h3 class="theme-title">Planet Venus</h3>
+            </div>
+
+            <div class="theme collection-6">
+                <img 
+                    src="imgs/thumbnail-milky-way.jpg" 
+                    alt="Thumbail Theme Image, Supernova Explosions" 
+                    class="theme-thumbnail"/>
+                <h3 class="theme-title">Milky Way Galaxy</h3>
+            </div>
+
+            <div class="theme collection-7">
+                <img 
+                    src="imgs/thumbnail-solar-system.jpg" 
+                    alt="Thumbail Theme Image, Supernova Explosions" 
+                    class="theme-thumbnail"/>
+                <h3 class="theme-title">Solar System</h3>
+            </div>
+
+            <div class="theme collection-8">
+                <img 
+                    src="imgs/thumbnail-black-hole.jpg" 
+                    alt="Thumbail Theme Image, Supernova Explosions" 
+                    class="theme-thumbnail"/>
+                <h3 class="theme-title">Black Holes</h3>
+            </div>
+
+            <div class="theme collection-9">
+                <img 
+                    src="imgs/thumbnail-pulsar.jpg" 
+                    alt="Thumbail Theme Image, Supernova Explosions" 
+                    class="theme-thumbnail"/>
+                <h3 class="theme-title">Pulsars</h3>
+            </div>
+
+            <div class="theme collection-10">
+                <img 
+                    src="imgs/thumbnail-uranus.jpg" 
+                    alt="Thumbail Theme Image, Supernova Explosions" 
+                    class="theme-thumbnail"/>
+                <h3 class="theme-title">Planet Uranus</h3>
+            </div>
         </section>
     </main>
     <div class="collection-1-container coll-container">
@@ -57,6 +113,70 @@
         </section>
         <img src="imgs/thumbnail-andromeda.jpg" class="coll-bg-img" />
     </div>
+    <div class="collection-3-container coll-container">
+        <img src="imgs/x-mark.png" alt="x mark, close window" class="x-mark">
+        <h1>Nova Explosions</h1>
+        <hr class="collection-hr"/>
+        <section class="collection-3-options coll-options">
+        </section>
+        <img src="imgs/thumbnail-andromeda.jpg" class="coll-bg-img" />
+    </div>
+    <div class="collection-4-container coll-container">
+        <img src="imgs/x-mark.png" alt="x mark, close window" class="x-mark">
+        <h1>Planet Mercury</h1>
+        <hr class="collection-hr"/>
+        <section class="collection-4-options coll-options">
+        </section>
+        <img src="imgs/thumbnail-mercury.jpg" class="coll-bg-img" />
+    </div>
+    <div class="collection-5-container coll-container">
+        <img src="imgs/x-mark.png" alt="x mark, close window" class="x-mark">
+        <h1>Planet Venus</h1>
+        <hr class="collection-hr"/>
+        <section class="collection-5-options coll-options">
+        </section>
+        <img src="imgs/thumbnail-andromeda.jpg" class="coll-bg-img" />
+    </div>
+    <div class="collection-6-container coll-container">
+        <img src="imgs/x-mark.png" alt="x mark, close window" class="x-mark">
+        <h1>Milky Way Galaxy</h1>
+        <hr class="collection-hr"/>
+        <section class="collection-6-options coll-options">
+        </section>
+        <img src="imgs/thumbnail-andromeda.jpg" class="coll-bg-img" />
+    </div>
+    <div class="collection-7-container coll-container">
+        <img src="imgs/x-mark.png" alt="x mark, close window" class="x-mark">
+        <h1>Solar System</h1>
+        <hr class="collection-hr"/>
+        <section class="collection-7-options coll-options">
+        </section>
+        <img src="imgs/thumbnail-andromeda.jpg" class="coll-bg-img" />
+    </div>
+    <div class="collection-8-container coll-container">
+        <img src="imgs/x-mark.png" alt="x mark, close window" class="x-mark">
+        <h1>Black Holes</h1>
+        <hr class="collection-hr"/>
+        <section class="collection-8-options coll-options">
+        </section>
+        <img src="imgs/thumbnail-andromeda.jpg" class="coll-bg-img" />
+    </div>
+    <div class="collection-9-container coll-container">
+        <img src="imgs/x-mark.png" alt="x mark, close window" class="x-mark">
+        <h1>Pulsar</h1>
+        <hr class="collection-hr"/>
+        <section class="collection-9-options coll-options">
+        </section>
+        <img src="imgs/thumbnail-andromeda.jpg" class="coll-bg-img" />
+    </div>
+    <div class="collection-10-container coll-container">
+        <img src="imgs/x-mark.png" alt="x mark, close window" class="x-mark">
+        <h1>Planet Uranus</h1>
+        <hr class="collection-hr"/>
+        <section class="collection-10-options coll-options">
+        </section>
+        <img src="imgs/thumbnail-andromeda.jpg" class="coll-bg-img" />
+    </div>
     <!--  -->
     <div class="general-frame-info-container pop">
     </div>
@@ -70,10 +190,8 @@
 const openingImg = document.querySelector('.opening-img')
 const openingTextContainer = document.querySelector('.opening-text-container')
 const optionsMenu = document.querySelector('.options-menu')
-// 
-const collection1Container = document.querySelector('.collection-1-container');
-const collection2Container = document.querySelector('.collection-2-container')
-/**/
+
+
 
 const bluringFunction  = function(blurDegree, focusedElement, state){
     openingImg.style.filter = `blur(${blurDegree}px)`
@@ -84,19 +202,18 @@ const bluringFunction  = function(blurDegree, focusedElement, state){
     focusedElement.style.display= `${state}`
 
     }
-    
-    // turn this in to a loop as well
-    document.querySelector('.collection-1').addEventListener('click', ()=>{
-        bluringFunction(50, collection1Container, 'block')
-        
-    })
-    document.querySelector('.collection-2').addEventListener('click', ()=>{
-        bluringFunction(50, collection2Container, 'block')
-    } )
 
+    const allInfoFrames =  document.querySelectorAll('.coll-container')
+   
+    for(let i = 0; i < allInfoFrames.length ; i++){
+        // alert(i+1)
+        document.querySelector(`.collection-${i+1}`).addEventListener('click', ()=>{
+            bluringFunction(50,
+            document.querySelector(`.collection-${i+1}-container`) , 
+            'block')
+        })
+    }
 
-
-    // turn this in to a loop
     const closeBtn = document.querySelectorAll('.x-mark');
 
     for(let i = 0; i<closeBtn.length ; i++){
