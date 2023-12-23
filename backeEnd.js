@@ -1,10 +1,11 @@
-document.addEventListener('DOMContentLoaded', function () {
+// document.addEventListener('DOMContentLoaded', function () {
 // const apiKey = 'PCnaFUbdL2cyfZ9dOrSdTzmUCpv8jH7deTK72lpe';
 
 // const factor = 'andromeda'
 
 const mainFunction = function(factor, collectionNum){
-    const apiUrl = `https://images-api.nasa.gov/search?q=${factor}`
+    // listName = 0
+    let apiUrl = `https://images-api.nasa.gov/search?q=${factor}`
     fetch(apiUrl)
     .then(response => response.json())
     .then(data => { 
@@ -20,13 +21,16 @@ const mainFunction = function(factor, collectionNum){
         // 
         // 
         // 
+        
+        let = totalItems = 0
         totalItems = (data.collection.items).length
         let sample = ``
         // let topLevel = data.collection.items
         // alert( )
+        try{
         for(let i = 0; i < totalItems; i++){
             sample += ` 
-            <div class="sample item-${i}">           
+            <div class="sample item-${i}-${factor}">           
                 <img src="${data.collection.items[i].links[0].href}" />
                 <div class="sample-title-wrapper">
                     <h2>${data.collection.items[i].data[0].title}</h2>
@@ -34,12 +38,13 @@ const mainFunction = function(factor, collectionNum){
                 <br />
             </div>
             `
-        }
-        
+            // listName ++
+
+        }}
+        catch{alert('oppsie')}
+        // alert(listName)
         // alert((data.collection.items).length)
         // data = ''
-
-
         const collection01 = document.querySelector(`.collection-${collectionNum}-options`);
         collection01.innerHTML = `${sample}`
         }
@@ -49,7 +54,7 @@ const mainFunction = function(factor, collectionNum){
             const samples = document.querySelectorAll('.sample');
             for(let z = 0; z < totalItems; z++){
         
-            document.querySelector(`.item-${z}`).addEventListener('click', ()=>{
+            document.querySelector(`.item-${z}-${factor}`).addEventListener('click', ()=>{
                 infoFramer.innerHTML = `
                 <div class="andromeda-galaxy-info-window info-window">
                     <img src="imgs/x-mark.png" alt="x mark, close window" class="x-mark-02">
@@ -78,12 +83,12 @@ const mainFunction = function(factor, collectionNum){
             
         }
         }
-        // totalItems = 0
 
 }
 
+// make a list on each iteration and then use that list's length to add event listener to all the windows
 
-mainFunction('pluto', 1)
-
-mainFunction('supernova', 2)
-});
+mainFunction('andromeda', 1)
+mainFunction('pluto', 2)
+mainFunction('supernova', 3)
+// });
