@@ -89,7 +89,7 @@ const mainFunction = function(factor, collectionNum){
 // make a list on each iteration and then use that list's length to add event listener to all the windows
 
 mainFunction('andromeda', 1)
-mainFunction('pluto', 2)
+mainFunction('planet-earth', 2)
 mainFunction('supernova', 3)
 mainFunction('mercury', 4)
 mainFunction('venus', 5)
