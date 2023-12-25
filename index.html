@@ -3,225 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NASA Daily Images</title>
-    <link rel="stylesheet" href="styles.css"/>
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="body">
-    <main class="main">
-        <img 
-            src="imgs/milkyWayOpeningImg.jpg"  
-            alt="milky way opening background image" 
-            class="opening-img"/>
-        <div class="opening-text-container">
-            <h2>Discover More</h2>
-            <h1>NASA DATA LIBRARY</h1>
-        </div>
+<body>
+    <nav class="nav-bar">
+        <span class="search-bar-wrapper">
+            <img src="images/icons/search.png" alt="search-icon" />
+            <input type="text" placeholder="Search" />
+        </span>
+        <span class="nav-destinations">
+            <p>Home</p>
+            <p>About</p>
+            <p>Tools</p>
+            <p>Something</p>
+        </span>
+    </nav>
+    <main>
+        <section class="opening">
+            <div class="text-container">
+                <h1>Discover <br />the Cosmos </h1>
+                <p>Triverse the page to discover everythinover <br />everythinover everything</p>
+                <button>Continue</button>
+            </div>
+            <div class="img-slices-container">
+                <div class="curten"></div>
+                <img src="images/openingSlides/pexels-aviv-perets-3274903.jpg" alt="" />
+            </div>
+        </section>
 
-        <section class="options-menu">
-            <div class="theme collection-1">
-                <img 
-                    src="imgs/thumbnail-andromeda.jpg" 
-                    alt="Thumbail Theme Image, Andromeda Galaxy" 
-                    class="theme-thumbnail"/>
-                <h3 class="theme-title">Andromeda Galaxy</h3>
-            </div>
-            <div class="theme collection-2">
-                <img 
-                    src="imgs/thumbnail-earth.jpg" 
-                    alt="Thumbail Theme Image, Planet Earth" 
-                    class="theme-thumbnail"/>
-                <h3 class="theme-title">Planet Earth</h3>
-            </div>
-            <div class="theme collection-3">
-                <img 
-                    src="imgs/thumbnail-supernova.jpg" 
-                    alt="Thumbail Theme Image, Supernova Explosions" 
-                    class="theme-thumbnail"/>
-                <h3 class="theme-title">Nova Explosions</h3>
-            </div>
+        <section class="about">
+            <h3>What is all About</h3>
+            <p>
+                Welcome to [Your Page Name], where the wonders of the universe come to life. Immerse yourself in a cosmic journey filled with educational insights, captivating visuals, and the latest discoveries. Our mission is to fuel your curiosity and deepen your understanding of the cosmos. Join us on this exploration of the extraordinary, where knowledge meets awe, and the mysteries of the universe unfold before your eyes.</p>
+        </section>
+
+        <section class="available-tools">
+            <img src="images/openingSlides/pexels-joonas-kääriäinen-239107.jpg" />
+            <h3>Title goes here</h3>
             
-            <div class="theme collection-4">
-                <img 
-                    src="imgs/thumbnail-mercury.jpg" 
-                    alt="Thumbail Theme Image, Supernova Explosions" 
-                    class="theme-thumbnail"/>
-                <h3 class="theme-title">Planet Mercury</h3>
+            <div class="curten-02"></div>
+            <div class="all-tools">
+                <div class="tool">
+                    <img src="images/icons/library.png" />
+                    <hr />
+                   <h2>Framed Data Library</h2>
+                </div>
+                <div class="tool">
+                    <img src="images/icons/search.png" />
+                    <hr />
+                    <h2>Browse the API</h2>
+                </div>
+                <div class="tool">
+                    <img src="images/icons/calendar.png" />
+                    <hr />
+                    <h2>Image of the day</h2>
+                </div>
+                <div class="tool">
+                    <img src="images/icons/sound.png" />
+                    <hr />
+                    <h2>Celestrial sounds</h2>
+                </div>
+                
+                <p class="small-description">View framed data, retrieved from NASA.</p>
+                <p class="small-description">Search specific information from NASA's API</p>
+                <p class="small-description">Discover today's special Image</p>
+                <p class="small-description">Discover today's special Image</p>
+                <!-- <div class="">sounds</div> -->
             </div>
 
-            <div class="theme collection-5">
-                <img 
-                    src="imgs/thumbnail-venus.jpg" 
-                    alt="Thumbail Theme Image, Supernova Explosions" 
-                    class="theme-thumbnail"/>
-                <h3 class="theme-title">Planet Venus</h3>
-            </div>
-
-            <div class="theme collection-6">
-                <img 
-                    src="imgs/thumbnail-milky-way.jpg" 
-                    alt="Thumbail Theme Image, Supernova Explosions" 
-                    class="theme-thumbnail"/>
-                <h3 class="theme-title">Milky Way Galaxy</h3>
-            </div>
-
-            <div class="theme collection-7">
-                <img 
-                    src="imgs/thumbnail-solar-system.jpg" 
-                    alt="Thumbail Theme Image, Supernova Explosions" 
-                    class="theme-thumbnail"/>
-                <h3 class="theme-title">Solar System</h3>
-            </div>
-
-            <div class="theme collection-8">
-                <img 
-                    src="imgs/thumbnail-black-hole.jpg" 
-                    alt="Thumbail Theme Image, Supernova Explosions" 
-                    class="theme-thumbnail"/>
-                <h3 class="theme-title">Black Holes</h3>
-            </div>
-
-            <div class="theme collection-9">
-                <img 
-                    src="imgs/thumbnail-pulsar.jpg" 
-                    alt="Thumbail Theme Image, Supernova Explosions" 
-                    class="theme-thumbnail"/>
-                <h3 class="theme-title">Pulsars</h3>
-            </div>
-
-            <div class="theme collection-10">
-                <img 
-                    src="imgs/thumbnail-uranus.jpg" 
-                    alt="Thumbail Theme Image, Supernova Explosions" 
-                    class="theme-thumbnail"/>
-                <h3 class="theme-title">Planet Uranus</h3>
-            </div>
         </section>
+
+        <footer></footer>
     </main>
-    <div class="collection-1-container coll-container">
-            <img src="imgs/x-mark.png" alt="x mark, close window" class="x-mark">
-            <h1>Andromeda Galaxy</h1>
-            <hr class="collection-hr"/>
-            <section class="collection-1-options coll-options">
-            </section>
-            <img src="imgs/thumbnail-andromeda.jpg" class="coll-bg-img" />
-    </div>
-    <div class="collection-2-container coll-container">
-        <img src="imgs/x-mark.png" alt="x mark, close window" class="x-mark">
-        <h1>Planet Eart</h1>
-        <hr class="collection-hr"/>
-        <section class="collection-2-options coll-options">
-        </section>
-        <img src="imgs/thumbnail-andromeda.jpg" class="coll-bg-img" />
-    </div>
-    <div class="collection-3-container coll-container">
-        <img src="imgs/x-mark.png" alt="x mark, close window" class="x-mark">
-        <h1>Nova Explosions</h1>
-        <hr class="collection-hr"/>
-        <section class="collection-3-options coll-options">
-        </section>
-        <img src="imgs/thumbnail-andromeda.jpg" class="coll-bg-img" />
-    </div>
-    <div class="collection-4-container coll-container">
-        <img src="imgs/x-mark.png" alt="x mark, close window" class="x-mark">
-        <h1>Planet Mercury</h1>
-        <hr class="collection-hr"/>
-        <section class="collection-4-options coll-options">
-        </section>
-        <img src="imgs/thumbnail-mercury.jpg" class="coll-bg-img" />
-    </div>
-    <div class="collection-5-container coll-container">
-        <img src="imgs/x-mark.png" alt="x mark, close window" class="x-mark">
-        <h1>Planet Venus</h1>
-        <hr class="collection-hr"/>
-        <section class="collection-5-options coll-options">
-        </section>
-        <img src="imgs/thumbnail-andromeda.jpg" class="coll-bg-img" />
-    </div>
-    <div class="collection-6-container coll-container">
-        <img src="imgs/x-mark.png" alt="x mark, close window" class="x-mark">
-        <h1>Milky Way Galaxy</h1>
-        <hr class="collection-hr"/>
-        <section class="collection-6-options coll-options">
-        </section>
-        <img src="imgs/thumbnail-andromeda.jpg" class="coll-bg-img" />
-    </div>
-    <div class="collection-7-container coll-container">
-        <img src="imgs/x-mark.png" alt="x mark, close window" class="x-mark">
-        <h1>Solar System</h1>
-        <hr class="collection-hr"/>
-        <section class="collection-7-options coll-options">
-        </section>
-        <img src="imgs/thumbnail-andromeda.jpg" class="coll-bg-img" />
-    </div>
-    <div class="collection-8-container coll-container">
-        <img src="imgs/x-mark.png" alt="x mark, close window" class="x-mark">
-        <h1>Black Holes</h1>
-        <hr class="collection-hr"/>
-        <section class="collection-8-options coll-options">
-        </section>
-        <img src="imgs/thumbnail-andromeda.jpg" class="coll-bg-img" />
-    </div>
-    <div class="collection-9-container coll-container">
-        <img src="imgs/x-mark.png" alt="x mark, close window" class="x-mark">
-        <h1>Pulsar</h1>
-        <hr class="collection-hr"/>
-        <section class="collection-9-options coll-options">
-        </section>
-        <img src="imgs/thumbnail-andromeda.jpg" class="coll-bg-img" />
-    </div>
-    <div class="collection-10-container coll-container">
-        <img src="imgs/x-mark.png" alt="x mark, close window" class="x-mark">
-        <h1>Planet Uranus</h1>
-        <hr class="collection-hr"/>
-        <section class="collection-10-options coll-options">
-        </section>
-        <img src="imgs/thumbnail-andromeda.jpg" class="coll-bg-img" />
-    </div>
-    <!--  -->
-    <div class="general-frame-info-container pop">
-    </div>
-
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="backeEnd.js"></script>
 <script>
+    const allTools = document.querySelectorAll('.tool')
+    
+    const allDescriptions = document.querySelectorAll('.small-description')
 
-// theme elements
-const openingImg = document.querySelector('.opening-img')
-const openingTextContainer = document.querySelector('.opening-text-container')
-const optionsMenu = document.querySelector('.options-menu')
+    allTools[0].addEventListener('click', ()=>{window.location = 'framedLibrary.html'})
+    allTools[1].addEventListener('click', ()=>{window.location = 'broWserAPI.html'})
 
-
-
-const bluringFunction  = function(blurDegree, focusedElement, state){
-    openingImg.style.filter = `blur(${blurDegree}px)`
-    openingTextContainer.style.filter = `blur(${blurDegree}px)`
-    optionsMenu.style.filter = `blur(${blurDegree}px)`
-
-    focusedElement.style.filter = 'blur(0px)'
-    focusedElement.style.display= `${state}`
-
-    }
-
-    const allInfoFrames =  document.querySelectorAll('.coll-container')
-   
-    for(let i = 0; i < allInfoFrames.length ; i++){
-        // alert(i+1)
-        document.querySelector(`.collection-${i+1}`).addEventListener('click', ()=>{
-            bluringFunction(50,
-            document.querySelector(`.collection-${i+1}-container`) , 
-            'block')
-        })
-    }
-
-    const closeBtn = document.querySelectorAll('.x-mark');
-
-    for(let i = 0; i<closeBtn.length ; i++){
-        console.log(closeBtn[i], i)
-        closeBtn[i].addEventListener('click', ()=>{
-            bluringFunction(0, document.querySelector(`.collection-${i+1}-container`), 'none')
-        })
-    }
 
 </script>
 </html>
