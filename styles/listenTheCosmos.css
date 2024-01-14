@@ -1,0 +1,200 @@
+html{
+    font-family: sans-serif;
+    overflow: hidden;
+}
+html *{
+    transition: 300ms;
+}
+body{
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+}
+.curten, .bg-img{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.curten{
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: -1;
+}
+.bg-img{
+    object-fit: cover;
+    z-index: -2;
+}
+main{
+    color: white;
+}
+main h1{
+    width: 100%;
+    height: 100%;
+    font-size: 3rem;
+    margin-top:4rem;
+    text-align: center;
+}
+main .main-description{
+    font-size: 1.35rem;
+    width: 60%;
+    margin: 0 auto;
+    text-align: justify;
+}
+audio{
+    height: 1.8rem;
+    padding: 0.5rem;
+    border-radius: 50px;
+
+}
+.sound-options{
+    width: 75%;
+    height: 45vh;
+    overflow: hidden;
+    overflow-y: auto;
+    padding: 0.5rem 1.5rem;
+    margin: 2rem auto;
+    border: solid 10px white;
+    border-radius: 15px;
+    animation: appearing-02 0.5s linear forwards;
+}
+@keyframes appearing-02 {
+    0%{opacity: 0}
+    100%{opacity: 1;}
+    
+}
+.small-div{
+    border-bottom: solid white 5px;
+    height: 5rem;
+    width: 100%;
+    margin: 2rem auto;
+}
+.bg-div-inner{
+    /* border: solid 1px red; */
+    height: 5rem;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+    position: relative;
+    top: 0;
+    z-index: -2;
+}
+/* .bg-div-inner img */
+.bg-div-inner img, .text-desc-bg img{
+    object-fit: cover;
+    /* z-index: -2; */
+    width: 100%;
+    height: 100%
+}
+.text-audio-content{
+    position: relative;
+    top: -80%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.text-audio-content h3{
+    font-size: 1.7rem;
+    margin: 0;
+    width: 40%;
+}
+.text-audio-content button{
+    background-color:rgb(176, 0, 0);
+    color: white;
+    border: solid 3px rgb(176, 0, 0);
+    /* padding: 0 1.5rem; */
+    font-size: 1.1rem;
+    transition: 250ms;
+    outline: none;
+    margin-bottom: 0.5rem;
+    width: fit-content
+}
+.text-audio-content button:hover{
+    background-color: transparent;
+    cursor: pointer;
+}
+.audio-text-description{
+    position: fixed;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    width: 50vw;
+    /* height: 50vh; */
+    height: fit-content; 
+    max-height: 80vh;
+    /* padding: 2rem 4rem; */
+    border: solid 10px rgb(255, 255, 255);
+    border-radius: 15px;
+    /* background-color: rgb(0, 0, 0); */
+    display: none;
+    animation: appearing 0.25s ease-in forwards;
+    overflow: hidden;
+    overflow-y: auto;
+    transition: 250ms;
+}
+
+
+.text-desc-bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -5;
+}
+.curten-inner-2, .curten-inner{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.text-desc-xmark{
+    position: fixed;
+    top: 0%;
+    right: 0;
+    background-color: rgb(255, 255, 255);
+    width: 2.5rem;
+    height: 2.5rem;
+}
+.text-desc-xmark:hover{
+    background-color: red;
+}
+.audio-text-discription-wrapper{
+    /* border: solid 1px white; */
+    height: 100%;
+}
+.audio-text-discription-wrapper h3{
+    text-align: center;
+    margin: 2rem auto 0.5rem auto;
+    width: 75%; 
+    font-size: 2.2rem;
+    margin-bottom: 0.2rem;
+}
+.audio-text-discription-wrapper hr{
+    width: 80%;
+    margin: 0.5rem auto 0 auto ;
+    border:solid 2.5px white;
+    border-radius: 5px;
+    /* height: 3rem; */
+}
+.audio-text-discription-wrapper p{
+    width: 80%;
+    /* border: solid red 1px; */
+    font-size: 1.2rem;
+    text-align: justify;
+    margin: 1rem auto 2rem auto;
+    padding: 2% 4%;
+}
+@keyframes appearing{
+    0%{
+        transform: translate(-50%, -50%) scale(50%);
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    80%{
+        transform: translate(-50%, -50%) scale(105%);
+    }
+    100%{
+        transform: translate(-50%, -50%) scale(100%);
+    }
+}
