@@ -5,9 +5,16 @@ const searchResultsContainter = document.querySelector('.search-results');
 
 input.addEventListener('keypress', function(event){
     if(event.keyCode === 13){
+        searchResultsContainter.innerHTML = `
+        <div class="loading-screen">
+        <div class="inner-wrapper">
+          <div class="loading-circle"></div>
+        <p>Loading</p>
+        <hr />
+      </div>
+        `
         showResults()
-
-
+        
     }
 })
 
