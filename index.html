@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css" />
+    <title>Learn About the Universe</title>
+    <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body>
     <nav class="nav-bar">
@@ -13,33 +13,38 @@
             <input type="text" placeholder="Search" />
         </span>
         <span class="nav-destinations">
-            <p>Home</p>
-            <p>About</p>
-            <p>Tools</p>
-            <p>Something</p>
+            <p><a href="#home" class="nav-anchor">Home</a></p>
+            <p><a href="#about" class="nav-anchor">About</a></p>
+            <p><a href="#tools" class="nav-anchor">Tools</a></p>
+            <p><a href="something" class="nav-anchor">Something</a></p>
         </span>
     </nav>
     <main>
-        <section class="opening">
+        <section class="opening" id="home">
             <div class="text-container">
                 <h1>Discover <br />the Cosmos </h1>
                 <p>Triverse the page to discover everythinover <br />everythinover everything</p>
-                <button>Continue</button>
+                <a href="#about"><button>Continue</button></a>
             </div>
-            <div class="img-slices-container">
+            <div class="img-slides-container">
                 <div class="curten"></div>
-                <img src="images/openingSlides/pexels-aviv-perets-3274903.jpg" alt="" />
+                <div class="slide-img-wrapper">
+                    <img src="images/openingSlidesImgs/pexels-aviv-perets-3274903.jpg" alt="" class="slide-img"/>
+                    <img src="images/openingSlidesImgs/pexels-francesco-ungaro-998641.jpg" alt="" class="slide-img"/>
+                    <img src="images/openingSlidesImgs/pexels-joonas-kääriäinen-239107.jpg" alt="" class="slide-img"/>
+                    <img src="images/openingSlidesImgs/pexels-pixabay-87009.jpg" alt="" class="slide-img"/>
+                </div>
             </div>
         </section>
 
-        <section class="about">
+        <section class="about" id="about">
             <h3>What is all About</h3>
             <p>
                 Welcome to [Your Page Name], where the wonders of the universe come to life. Immerse yourself in a cosmic journey filled with educational insights, captivating visuals, and the latest discoveries. Our mission is to fuel your curiosity and deepen your understanding of the cosmos. Join us on this exploration of the extraordinary, where knowledge meets awe, and the mysteries of the universe unfold before your eyes.</p>
         </section>
 
-        <section class="available-tools">
-            <img src="images/openingSlides/pexels-joonas-kääriäinen-239107.jpg" />
+        <section class="available-tools" id="tools">
+            <img src="images/openingSlidesImgs/pexels-joonas-kääriäinen-239107.jpg" />
             <h3>Title goes here</h3>
             
             <div class="curten-02"></div>
@@ -73,18 +78,21 @@
             </div>
 
         </section>
+<div class="bg-music-div">
+    <audio id="bg-audio" loop>
+        <source src="soundFiles/Perseus Galaxy Cluster.mp3" type="audio/mp3">
+    </audio>
+    <img src="images/icons/play.png" class="music-play-btn" />
+    <img src="images/icons/pause.png" class="music-pause-btn"/>
+    <div class="volume-control">
+        <button class="inc">+</button>
+        <button class="dec">-</button>
+        <p class="volume-display">5%</p>
+    </div>
 
+</div>
         <footer></footer>
     </main>
 </body>
-<script>
-    const allTools = document.querySelectorAll('.tool')
-    
-    const allDescriptions = document.querySelectorAll('.small-description')
-
-    allTools[0].addEventListener('click', ()=>{window.location = 'framedLibrary.html'})
-    allTools[1].addEventListener('click', ()=>{window.location = 'broWserAPI.html'})
-
-
-</script>
+<script src="scriptJS/index.js"></script>
 </html>
