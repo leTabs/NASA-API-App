@@ -3,6 +3,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`;
 
+    
+    const infoContainer = document.querySelector('.info-container');
+    infoContainer.innerHTML = `
+    <div class="loading-screen">
+    <div class="inner-wrapper">
+      <div class="loading-circle"></div>
+    <p>Loading</p>
+
+    </div>
+    `
+
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
@@ -14,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
     function updateDOM(data) {
-        const infoContainer = document.querySelector('.info-container');
 
 
         const htmlContent = `
