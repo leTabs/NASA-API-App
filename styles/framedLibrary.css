@@ -1,5 +1,5 @@
 :root{
-    --info-border-color: rgb(29, 0, 76);
+    --info-border-color: rgb(255, 255, 255);
 }
 
 
@@ -229,7 +229,8 @@ html{
 .general-frame-info-container{
     width: calc(100vw - 6vw);
     height:100vh;
-    background-color: white;
+    background: linear-gradient(120deg, black, rgb(24, 24, 24), rgb(0, 0, 0));
+    color: white;
     position: fixed;
     top: 0%;
     left: 0%;
@@ -253,11 +254,11 @@ html{
     display: block;
     margin: 1rem auto;
     border: solid 1px white;
-    transition: 150ms
+    transition: 150ms;
 }
 
 .general-frame-info-container h1{
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin: 3.5rem auto 2rem auto;
     width: 75%;
 }
@@ -268,7 +269,9 @@ html{
     margin: 1.2rem auto;
     padding: 2.5rem 3.5rem;
     border-radius: 15px;
-    box-shadow: inset 3px 3px 15px black;
+    /* box-shadow: inset 3px 3px 15px black; */
+    border: solid white 1px;
+    border-bottom-width: 10px;
 }
 .info-date{
     text-align: center;
