@@ -13,33 +13,100 @@ allTools[1].addEventListener('click', ()=>{window.location = 'browseTheApi.html'
 allTools[2].addEventListener('click', ()=>{window.location = 'imageOfTheDay.html'})
 allTools[3].addEventListener('click', ()=>{window.location = 'listenTheCosmos.html'})
 
+
+
+///////
 const slidesContainer = document.querySelector('.img-slides-container')
 
 const slideImages = document.querySelectorAll('.slide-img')
 
-slideImages[0].style.right = '0';
-const timeGapAnimation = 4000
-const waitingFunc = function(){
-    slideImages[1].style.right = '12.8%';
-    slideImages[2].style.right = '12.8%';
-    slideImages[3].style.right = '12.8%';
-    setTimeout(waitingFunc02, timeGapAnimation * 2) // + transiotion time
-}
-const waitingFunc02 = function(){
-    slideImages[2].style.right = '19.1%';
-    slideImages[3].style.right = '19.1%';
-}
-const ex = function(){
-    slideImages[0].style.right = '6.4%';
-    slideImages[1].style.right = '6.4%';
-    slideImages[2].style.right = '6.4%';
-    slideImages[3].style.right = '6.4%';
-    
-    setTimeout(waitingFunc, timeGapAnimation * 2)
-}
+const animationTransitionTime = 2000;
+const animationGapTime = 8000;
+// mae animationGap time 4000 later 
 
-// setTimeout(ex, timeGapAnimation * 2) 
-// commented to stop animation sequence 
+function slideShowFunc01(){
+    slideImages[0].style.opacity = '0'
+    slideImages[1].style.opacity = '1'
+    setTimeout(()=>{    
+        slideImages[1].style.opacity = '0';
+        slideImages[2].style.opacity = '1';
+        setTimeout(()=>{
+            slideImages[2].style.opacity = '0';
+            slideImages[3].style.opacity = '1';
+            setTimeout(()=>{
+                slideImages[3].style.opacity = '0';
+                slideImages[4].style.opacity = '1';
+
+                setTimeout(()=>{
+                    slideImages[4].style.opacity = '0';
+                    slideImages[5].style.opacity = '1';
+
+                    setTimeout(()=>{
+                        slideImages[5].style.opacity = '0';
+                        slideImages[6].style.opacity = '1';
+
+                        setTimeout(()=>{
+                            slideImages[6].style.opacity = '0';
+                            slideImages[7].style.opacity = '1';
+                            
+                            setTimeout(()=>{
+                                slideImages[7].style.opacity = '0';
+                                slideImages[8].style.opacity = '1';
+                                
+                                setTimeout(()=>{
+                                    slideImages[8].style.opacity = '0';
+                                    slideImages[9].style.opacity = '1';
+                                    
+                                    setTimeout(()=>{
+                                        slideImages[9].style.opacity = '0';
+                                        slideImages[10].style.opacity = '1';
+
+                                        setTimeout(()=>{
+                                            slideImages[10].style.opacity = '0';
+                                            slideImages[11].style.opacity = '1';
+
+                                            setTimeout(()=>{
+                                                slideImages[11].style.opacity = '0';
+                                                slideImages[12].style.opacity = '1';
+
+                                                setTimeout(()=>{
+                                                    slideImages[12].style.opacity = '0';
+                                                    slideImages[13].style.opacity = '1';
+
+                                                    setTimeout(()=>{
+                                                        slideImages[13].style.opacity = '0';
+                                                        slideImages[0].style.opacity = '1';
+                                        
+                                                    }, animationGapTime)
+                                                    setTimeout(completeSlideShow, animationGapTime)
+
+                                                }, animationGapTime)
+                                            }, animationGapTime)
+                                        }, animationGapTime)
+                                    }, animationGapTime)
+                                }, animationGapTime)
+                            }, animationGapTime)
+                        }, animationGapTime)
+                    }, animationGapTime)
+                }, animationGapTime)
+            }, animationGapTime)
+
+
+
+            // Next update: add some random image options
+        }, animationGapTime + animationTransitionTime)
+
+    }, animationGapTime
+    )
+}
+function completeSlideShow(){
+    setTimeout(slideShowFunc01, animationGapTime)
+}
+completeSlideShow()
+// [...]
+
+
+
 
 const musicPlayBtn = document.querySelector('.music-play-btn')
 const musicPauseBtn = document.querySelector('.music-pause-btn')
@@ -83,4 +150,16 @@ volumeDecreseBtn.addEventListener('click', ()=>{
     if(volumeDegree < 0){volumeDegree = 0}
     volumeDisplay.textContent =  `${Math.round(volumeDegree * 100)}%`
     backgroundAudio.volume = volumeDegree 
+})
+
+
+
+// [...]
+
+
+
+const searchIcon = document.querySelector('.search-icon')
+
+searchIcon.addEventListener('click', ()=>{
+    alert('pop')
 })
