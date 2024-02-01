@@ -10,7 +10,7 @@
     <nav class="nav-bar">
         <span class="search-bar-wrapper">
             <img src="images/icons/search.png" alt="search-icon" class="search-icon"/>
-            <input type="text" placeholder="Search" />
+            <input type="text" placeholder="Search" class="nav-search-bar"/>
         </span>
         <span class="nav-destinations">
             <p><a href="#home" class="nav-anchor">Home</a></p>
@@ -99,42 +99,27 @@
     <img src="images/icons/play.png" class="music-play-btn" />
     <img src="images/icons/pause.png" class="music-pause-btn"/>
     <div class="volume-control">
-        <button class="inc">+</button>
         <button class="dec">-</button>
+        <button class="inc">+</button>
         <p class="volume-display">5%</p>
     </div>
 
 </div>
 
-<!-- <div class="search-blocking-curten"></div> -->
+<div class="search-blocking-curten"></div>
 <div class="search-curten"></div>
 
 <div class="search-results-div">
-    <h3>Results for: "<span class="search-input-value">ewewe</span>" <span class="search-total-results">101</span></h3>
-    <hr />
-    <div class="search-results">
-        <div class="result-titles">
-                <h2 class="title">Weighing in on the Dumbbell Nebula</h2>
-                <h2 class="title">Weighing in on the Dumbbell Nebula</h2>
-                <h2 class="title">Weighing in on the Dumbbell Nebula</h2>
-                <h2 class="title">Weighing in on the Dumbbell Nebula</h2>
-                <h2 class="title">Weighing in on the Dumbbell Nebula</h2>
-                <h2 class="title">Weighing in on the Dumbbell Nebula</h2>
-                <h2 class="title">Weighing in on the Dumbbell Nebula</h2>
-                <h2 class="title">Weighing in on the Dumbbell Nebula</h2>
-                <h2 class="title">Weighing in on the Dumbbell Nebula</h2>
-                <h2 class="title">Weighing in on the Dumbbell Nebula</h2>
-                <h2 class="title">Weighing in on the Dumbbell Nebula</h2>
-                <h2 class="title">Weighing in on the Dumbbell Nebula</h2>
-                <h2 class="title">Weighing in on the Dumbbell Nebula</h2>
-                <h2 class="title">Weighing in on the Dumbbell Nebula</h2>
-                <h2 class="title">Weighing in on the Dumbbell Nebula</h2>
-                <h2 class="title">Weighing in on the Dumbbell Nebula</h2>
-                <p>No more results</p>
-        </div>
+    <div class="search-results-upper">
+        <h3 class="search-input-value"></h3>
+        <!-- <hr /> -->
     </div>
-    <p class="bottom-text">Move to the main search functionality to view your search in more detail, <a href="browseTheApi.html">here</a> .</p>
-    <button>close</button>
+    <div class="search-results-middle">
+    </div>
+    <div class="search-results-lower">
+        <p>Move to the main search functionality to view your search in more detail, <a href="browseTheApi.html">here</a> .</p>
+        <button class="search-results-close-btn">close</button>
+    </div>
 </div>
         <footer></footer>
     </main>
