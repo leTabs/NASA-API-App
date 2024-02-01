@@ -157,9 +157,85 @@ volumeDecreseBtn.addEventListener('click', ()=>{
 // [...]
 
 
+// .search-blocking-curten, 
+// .search-curten,
+// .search-results-div
+
 
 const searchIcon = document.querySelector('.search-icon')
+const navSearchBar = document.querySelector('.nav-search-bar')
+const searchBlockingCurtne = document.querySelector('.search-blocking-curten')
+const searchCurten = document.querySelector('.search-curten')
+const searchResultsDiv = document.querySelector('.search-results-div')
+const searchResultsCloseBtn = document.querySelector('.search-results-close-btn')
+const searchResultsMiddle = document.querySelector('.search-results-middle')
+
+function searchResultsDisplay(state){
+    searchBlockingCurtne.style.display = `${state}`
+    searchCurten.style.display = `${state}`
+    searchResultsDiv.style.display = `${state}`
+
+}
+function showResults(){
+    // make a loading animation here later 
+    searchResultsMiddle.innerHTML = `Loading animation proxy`
+    searchResultsDisplay('block')
+    let inputContent = navSearchBar.value
+    inputContent = inputContent.trim()
+    inputContent = inputContent.replace(' ', '-')
+    getData(inputContent)
+}
+
+function getData(factor){
+    const apiUrl = `https://images-api.nasa.gov/search?q=${factor}`
+
+fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+        totalItems = (data.collection.items).length
+        updateDOM(data);
+    })
+    .catch(error => {
+        console.error('Error fetching data from NASA API:', error);
+
+    });
+
+function updateDOM(data) {
+    if((data.collection.items).length === 0 ){
+        searchResultsMiddle.innerHTML = `<p class="no-results">No results were found </p>`
+        alert('pop')
+    }else{
+        structuringData(data)
+    }
+}
+}
+
+function structuringData(data){
+    let counter = (data.collection.items).length
+    let sample = ''
+    try{
+    for(let i = 0; i < counter; i++){
+        sample += `<h2>${data.collection.items[i].data[0].title}</h2>`
+    }
+}catch{}
+
+searchResultsMiddle.innerHTML = `${sample}`
+document.querySelector('.search-input-value').innerHTML = `${navSearchBar.value}`
+}
+
 
 searchIcon.addEventListener('click', ()=>{
-    alert('pop')
+    // searchResultsDisplay('block')
+    showResults()
+})
+
+navSearchBar.addEventListener('keypress', function(event){
+    if(event.keyCode === 13){
+        showResults()
+    }
+})
+
+
+searchResultsCloseBtn.addEventListener('click', ()=>{
+    searchResultsDisplay('none')
 })
