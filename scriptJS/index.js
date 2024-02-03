@@ -171,6 +171,7 @@ const searchResultsCloseBtn = document.querySelector('.search-results-close-btn'
 const searchResultsMiddle = document.querySelector('.search-results-middle')
 
 function searchResultsDisplay(state){
+    searchResultsMiddle.style.height = '50vh'
     searchBlockingCurtne.style.display = `${state}`
     searchCurten.style.display = `${state}`
     searchResultsDiv.style.display = `${state}`
@@ -178,7 +179,14 @@ function searchResultsDisplay(state){
 }
 function showResults(){
     // make a loading animation here later 
-    searchResultsMiddle.innerHTML = `Loading animation proxy`
+    searchResultsMiddle.innerHTML = `
+    <div class="loading-screen">
+    <div class="inner-wrapper">
+      <div class="loading-circle"></div>
+    <p>Loading</p>
+  </div>
+    `
+    document.querySelector('.search-input-value').innerHTML = `${navSearchBar.value}`
     searchResultsDisplay('block')
     let inputContent = navSearchBar.value
     inputContent = inputContent.trim()
@@ -203,7 +211,7 @@ fetch(apiUrl)
 function updateDOM(data) {
     if((data.collection.items).length === 0 ){
         searchResultsMiddle.innerHTML = `<p class="no-results">No results were found </p>`
-        alert('pop')
+        searchResultsMiddle.style.height = '15vh'
     }else{
         structuringData(data)
     }
@@ -220,7 +228,6 @@ function structuringData(data){
 }catch{}
 
 searchResultsMiddle.innerHTML = `${sample}`
-document.querySelector('.search-input-value').innerHTML = `${navSearchBar.value}`
 }
 
 
@@ -231,7 +238,17 @@ searchIcon.addEventListener('click', ()=>{
 
 navSearchBar.addEventListener('keypress', function(event){
     if(event.keyCode === 13){
+        
+        searchResultsDiv.style.top = '50%'
         showResults()
+        document.querySelector('html').addEventListener('keydown', function(event){
+            if(event.key === 'Escape'){
+                searchResultsDiv.style.top = '160%'
+                setTimeout(()=>{searchResultsDisplay('none')}, 1000)
+                
+                // remember to remove the event listener
+            }
+        })
     }
 })
 
