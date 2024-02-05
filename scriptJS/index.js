@@ -1,15 +1,12 @@
 // [TOOL ELEMENTS, LISTENERS]
 const allTools = document.querySelectorAll('.tool')
-    
 const allDescriptions = document.querySelectorAll('.small-description')
 
 allTools[0].addEventListener('click', ()=>{window.location = 'framedLibrary.html'})
 allTools[1].addEventListener('click', ()=>{window.location = 'browseTheApi.html'})
 allTools[2].addEventListener('click', ()=>{window.location = 'imageOfTheDay.html'})
 allTools[3].addEventListener('click', ()=>{window.location = 'listenTheCosmos.html'})
-
 // [...]
-
 
 // [OPENING IMAGE SLIDE SHOW]
 
@@ -44,20 +41,11 @@ console.log(imageNameArray)
 const slidesContainer = document.querySelector('.img-slides-container')
 const slideImages = document.querySelectorAll('.slide-img')
 
-
 for(let i= 0; i< 14;i++){
     slideImages[i].src = `images/openingSlidesImgs/${imageNameArray[i]}`
 }
 
-console.log(slideImages)
-  
-  
-
-
-const animationTransitionTime = 2000; //find a better solution
 const animationGapTime = 8000;
-
-
 
 function slideShowFunc01(){
     slideImages[0].style.opacity = '0'
@@ -126,11 +114,8 @@ function slideShowFunc01(){
                 }, animationGapTime)
             }, animationGapTime)
 
-
-
-            // Next update: add some random image options
+//Next update renew the images
         }, animationGapTime)
-
     }, animationGapTime
     )
 }
@@ -139,28 +124,22 @@ function completeSlideShow(){
 }
 completeSlideShow()
 
-
 // [...]
 
 
-
+// [AMBIENCE SOUND]
 const musicPlayBtn = document.querySelector('.music-play-btn')
 const musicPauseBtn = document.querySelector('.music-pause-btn')
 
-
 let backgroundAudio = document.querySelector('#bg-audio')
-
-
 
 let volumeDegree = 0.05
 backgroundAudio.volume = volumeDegree
-
 
 musicPlayBtn.addEventListener('click', ()=>{
     backgroundAudio.pause()
     musicPlayBtn.style.display = 'none'
     musicPauseBtn.style.display = "inline"
-
 })
 musicPauseBtn.addEventListener('click', ()=>{
     backgroundAudio.play()
@@ -171,8 +150,6 @@ musicPauseBtn.addEventListener('click', ()=>{
 const volumeIncreseBtn = document.querySelector('.inc')
 const volumeDecreseBtn = document.querySelector('.dec')
 const volumeDisplay = document.querySelector('.volume-display')
-// alert(3)
-// let volumeRoundedValue = Math.round(volumeDegree * 100)
 
 volumeIncreseBtn.addEventListener('click', ()=>{
     if(volumeDegree >= 0.96){ volumeDegree = 0.95} 
@@ -188,16 +165,13 @@ volumeDecreseBtn.addEventListener('click', ()=>{
     backgroundAudio.volume = volumeDegree 
 })
 
-
-
 // [...]
 
 
-// .search-blocking-curten, 
-// .search-curten,
-// .search-results-div
+// [NAVBAR SEARCH FUNCTIONLITY]
 
 
+// getting the relative elements
 const searchIcon = document.querySelector('.search-icon')
 const navSearchBar = document.querySelector('.nav-search-bar')
 const searchBlockingCurtne = document.querySelector('.search-blocking-curten')
@@ -206,6 +180,9 @@ const searchResultsDiv = document.querySelector('.search-results-div')
 const searchResultsCloseBtn = document.querySelector('.search-results-close-btn')
 const searchResultsMiddle = document.querySelector('.search-results-middle')
 
+
+// first function 
+// displays and hides the reults + adjusts the height to 50vh (perhaps remove this later) 
 function searchResultsDisplay(state){
     searchResultsMiddle.style.height = '50vh'
     searchBlockingCurtne.style.display = `${state}`
@@ -213,8 +190,12 @@ function searchResultsDisplay(state){
     searchResultsDiv.style.display = `${state}`
 
 }
+// sec function
+// displays the loading screen, gets the input value, 
+//gives the window the title, calls the data getting function
+// calls the dislpaing function
 function showResults(){
-    // make a loading animation here later 
+    searchResultsDiv.style.top = '50%'
     searchResultsMiddle.innerHTML = `
     <div class="loading-screen">
     <div class="inner-wrapper">
@@ -222,14 +203,25 @@ function showResults(){
     <p>Loading</p>
   </div>
     `
-    document.querySelector('.search-input-value').innerHTML = `${navSearchBar.value}`
-    searchResultsDisplay('block')
+
     let inputContent = navSearchBar.value
     inputContent = inputContent.trim()
     inputContent = inputContent.replace(' ', '-')
+    if(inputContent == ''){return alert('Empty attempt search.\nPlease type before searching')}
+    
+    searchResultsDisplay('block')
+
+    document.querySelector('html').addEventListener('keydown', function(event){
+        if(event.key === 'Escape'){
+            closingFunc()
+        }
+    })
     getData(inputContent)
 }
 
+// third function
+// gets the data from the api
+// calls the update dom function
 function getData(factor){
     const apiUrl = `https://images-api.nasa.gov/search?q=${factor}`
 
@@ -241,9 +233,12 @@ fetch(apiUrl)
     })
     .catch(error => {
         console.error('Error fetching data from NASA API:', error);
-
+        return alert('Something went wrong.\nCheck your internet connection')
     });
 
+// fourth function
+// returns or not the data, if no data says so and adjusts the height 
+// else calls the data structuing function
 function updateDOM(data) {
     if((data.collection.items).length === 0 ){
         searchResultsMiddle.innerHTML = `<p class="no-results">No results were found </p>`
@@ -251,57 +246,46 @@ function updateDOM(data) {
     }else{
         structuringData(data)
     }
-}
+}    
 }
 
+// fifth function
+// structurs the data to html
 function structuringData(data){
-    let counter = (data.collection.items).length
     let sample = ''
     try{
-    for(let i = 0; i < counter; i++){
+    for(let i = 0; i < (data.collection.items).length; i++){
         sample += `<h2>${data.collection.items[i].data[0].title}</h2>`
     }
 }catch{}
-
 searchResultsMiddle.innerHTML = `${sample}`
 }
 
 
-searchIcon.addEventListener('click', ()=>{
-    // searchResultsDisplay('block')
-    showResults()
-})
+// sisxth function
+// closing function
+function closingFunc(){
+    searchResultsDiv.style.top = '200%'
+    setTimeout(()=>{searchResultsDisplay('none')}, 250)
+}
 
-navSearchBar.addEventListener('keypress', function(event){
-    if(event.keyCode === 13){
-        
-        searchResultsDiv.style.top = '50%'
-        showResults()
-        document.querySelector('html').addEventListener('keydown', function(event){
-            if(event.key === 'Escape'){
-                searchResultsDiv.style.top = '160%'
-                setTimeout(()=>{searchResultsDisplay('none')}, 1000)
-                
-                // remember to remove the event listener
-            }
-        })
-    }
-})
-
-
+// first event 
+searchIcon.addEventListener('click', ()=>{showResults()})
+// sec event
+navSearchBar.addEventListener('keydown', function(event){
+    if(event.keyCode === 13){showResults()}})
+// fourth event 
 searchResultsCloseBtn.addEventListener('click', ()=>{
-    searchResultsDisplay('none')
+    closingFunc()
 })
 
+// [...]
 
 
-// data.url
 
-
+// [TOOLS BACKGROUND IMAGE OF THE DAY]
 const apiKey = 'PCnaFUbdL2cyfZ9dOrSdTzmUCpv8jH7deTK72lpe';
-
 const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`;
-
 
 fetch(apiUrl)
     .then(response => response.json())
@@ -317,8 +301,6 @@ function updateDOM(data) {
 
     const imageContainer = document.querySelector('.tools-bg-img')
     imageContainer.src = `${data.url}`
-    // imageContainer.innerHTML = `<img src="${data.url}" alt="add context later"/>`
-
-    // document.querySelector('.exp').innerHTML =  `<img src="${data.url}" alt="add context later"/>`
-
 };
+
+// [...]
