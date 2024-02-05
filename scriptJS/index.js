@@ -1,9 +1,4 @@
-// navigation
-
-
-
-
-// other
+// [TOOL ELEMENTS, LISTENERS]
 const allTools = document.querySelectorAll('.tool')
     
 const allDescriptions = document.querySelectorAll('.small-description')
@@ -13,16 +8,56 @@ allTools[1].addEventListener('click', ()=>{window.location = 'browseTheApi.html'
 allTools[2].addEventListener('click', ()=>{window.location = 'imageOfTheDay.html'})
 allTools[3].addEventListener('click', ()=>{window.location = 'listenTheCosmos.html'})
 
+// [...]
 
 
-///////
+// [OPENING IMAGE SLIDE SHOW]
+
+const imageNameArray = [
+    "pexels-aviv-perets-3274903.jpg",
+    "pexels-francesco-ungaro-998641.jpg",
+    "pexels-joonas-kääriäinen-239107.jpg",
+    "pexels-pixabay-87009.jpg",
+    "pexels-johan-de-beer-5476413.jpg",
+    "saturn-rings.jpg",
+    "pexels-pixabay-2150.jpg",
+    "pexels-pixabay-41951.jpg",
+    "pexels-robert-gruszecki-11657224.jpg",
+    "pexels-spacex-23793.jpg",
+    "pexels-jeremy-müller-11101908.jpg",
+    "pexels-scott-lord-16880954.jpg",
+    "pexels-stefan-stefancik-91216.jpg",
+    "pexels-scott-lord-16880956.jpg"
+]
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+// Call the shuffle function
+shuffleArray(imageNameArray);
+console.log(imageNameArray)
+
 const slidesContainer = document.querySelector('.img-slides-container')
-
 const slideImages = document.querySelectorAll('.slide-img')
 
-const animationTransitionTime = 2000;
+
+for(let i= 0; i< 14;i++){
+    slideImages[i].src = `images/openingSlidesImgs/${imageNameArray[i]}`
+}
+
+console.log(slideImages)
+  
+  
+
+
+const animationTransitionTime = 2000; //find a better solution
 const animationGapTime = 8000;
-// mae animationGap time 4000 later 
+
+
 
 function slideShowFunc01(){
     slideImages[0].style.opacity = '0'
@@ -76,7 +111,7 @@ function slideShowFunc01(){
                                                     setTimeout(()=>{
                                                         slideImages[13].style.opacity = '0';
                                                         slideImages[0].style.opacity = '1';
-                                        
+                                                        console.log('cicle done')
                                                     }, animationGapTime)
                                                     setTimeout(completeSlideShow, animationGapTime)
 
@@ -94,7 +129,7 @@ function slideShowFunc01(){
 
 
             // Next update: add some random image options
-        }, animationGapTime + animationTransitionTime)
+        }, animationGapTime)
 
     }, animationGapTime
     )
@@ -103,8 +138,9 @@ function completeSlideShow(){
     setTimeout(slideShowFunc01, animationGapTime)
 }
 completeSlideShow()
-// [...]
 
+
+// [...]
 
 
 
@@ -256,3 +292,33 @@ navSearchBar.addEventListener('keypress', function(event){
 searchResultsCloseBtn.addEventListener('click', ()=>{
     searchResultsDisplay('none')
 })
+
+
+
+// data.url
+
+
+const apiKey = 'PCnaFUbdL2cyfZ9dOrSdTzmUCpv8jH7deTK72lpe';
+
+const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`;
+
+
+fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+        updateDOM(data);
+    })
+    .catch(error => {
+        
+        console.error('Error fetching data from NASA API:', error);
+    });
+
+function updateDOM(data) {
+
+    const imageContainer = document.querySelector('.tools-bg-img')
+    imageContainer.src = `${data.url}`
+    // imageContainer.innerHTML = `<img src="${data.url}" alt="add context later"/>`
+
+    // document.querySelector('.exp').innerHTML =  `<img src="${data.url}" alt="add context later"/>`
+
+};
