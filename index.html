@@ -1,124 +1,306 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn About the Universe</title>
-    <link rel="stylesheet" href="styles/index.css" />
-</head>
-<body>
-    <nav class="nav-bar">
-        <span class="search-bar-wrapper">
-            <img src="images/icons/search.png" alt="search-icon" class="search-icon"/>
-            <input type="text" placeholder="Search" class="nav-search-bar"/>
-        </span>
-        <span class="nav-destinations">
-            <p><a href="#home" class="nav-anchor">Home</a></p>
-            <p><a href="#about" class="nav-anchor">About</a></p>
-            <p><a href="#tools" class="nav-anchor">Tools</a></p>
-            <p><a href="something" class="nav-anchor">Documentation</a></p>
-        </span>
-    </nav>
-    <main>
-        <section class="opening" id="home">
-            <div class="text-container">
-                <h1>Discover <br />the Cosmos </h1>
-                <p>Triverse the page to discover everythinover <br />everythinover everything</p>
-                <a href="#about"><button>Continue</button></a>
-            </div>
-            <div class="img-slides-container">
-                <div class="curten"></div>
-                <div class="slide-img-wrapper">
-                    <img src="" alt="" class="slide-img"/>
-                    <img src="" alt="" class="slide-img"/>
-                    <img src="" alt="" class="slide-img"/>
-                    <img src="" alt="" class="slide-img"/>
-                    <img src="" alt="" class="slide-img"/>
-                    <img src="" alt="" class="slide-img"/>
-                    <img src="" alt="" class="slide-img"/>
-                    <img src="" alt="" class="slide-img"/>
-                    <img src="" alt="" class="slide-img"/>
-                    <img src="" alt="" class="slide-img"/>
-                    <img src="" alt="" class="slide-img"/>
-                    <img src="" alt="" class="slide-img"/>
-                    <img src="" alt="" class="slide-img"/>
-                    <img src="" alt="" class="slide-img"/>
-                </div>
-            </div>
-        </section>
+// [TOOL ELEMENTS, LISTENERS]
+const allTools = document.querySelectorAll('.tool')
+const allDescriptions = document.querySelectorAll('.small-description')
 
-        <section class="about" id="about">
-            <h3>What is all About</h3>
-            <p>
-                Welcome to [Your Page Name], where the wonders of the universe come to life. Immerse yourself in a cosmic journey filled with educational insights, captivating visuals, and the latest discoveries. Our mission is to fuel your curiosity and deepen your understanding of the cosmos. Join us on this exploration of the extraordinary, where knowledge meets awe, and the mysteries of the universe unfold before your eyes.</p>
-            <a href="#tools"><button class="about-continue-btn">Continue</button></a>
-            </section>
+allTools[0].addEventListener('click', ()=>{window.location = 'framedLibrary.html'})
+allTools[1].addEventListener('click', ()=>{window.location = 'browseTheApi.html'})
+allTools[2].addEventListener('click', ()=>{window.location = 'imageOfTheDay.html'})
+allTools[3].addEventListener('click', ()=>{window.location = 'listenTheCosmos.html'})
+// [...]
 
-        <section class="available-tools" id="tools">
-            <img src="images/openingSlidesImgs/pexels-joonas-kääriäinen-239107.jpg" class="tools-bg-img" />
-            <h3>Title goes here</h3>
-            
-            <div class="curten-02"></div>
-            <div class="all-tools">
-                <div class="tool">
-                    <img src="images/icons/library.png" />
-                    <hr />
-                   <h2>Framed Data Library</h2>
-                </div>
-                <div class="tool">
-                    <img src="images/icons/search.png" />
-                    <hr />
-                    <h2>Browse the API</h2>
-                </div>
-                <div class="tool">
-                    <img src="images/icons/calendar.png" />
-                    <hr />
-                    <h2>Image of the day</h2>
-                </div>
-                <div class="tool">
-                    <img src="images/icons/sound.png" />
-                    <hr />
-                    <h2>Celestrial sounds</h2>
-                </div>
-                
-                <p class="small-description">View framed data, retrieved from NASA.</p>
-                <p class="small-description">Search specific information from NASA's API</p>
-                <p class="small-description">Discover today's special Image</p>
-                <p class="small-description">Discover today's special Image</p>
-                <!-- <div class="">sounds</div> -->
-            </div>
+// [OPENING IMAGE SLIDE SHOW]
 
-        </section>
-<div class="bg-music-div">
-    <audio id="bg-audio" loop>
-        <source src="soundFiles/Perseus Galaxy Cluster.mp3" type="audio/mp3">
-    </audio>
-    <img src="images/icons/play.png" class="music-play-btn" />
-    <img src="images/icons/pause.png" class="music-pause-btn"/>
-    <div class="volume-control">
-        <button class="dec">-</button>
-        <button class="inc">+</button>
-        <p class="volume-display">5%</p>
-    </div>
+const imageNameArray = [
+    "pexels-aviv-perets-3274903.jpg",
+    "pexels-francesco-ungaro-998641.jpg",
+    "pexels-joonas-kääriäinen-239107.jpg",
+    "pexels-pixabay-87009.jpg",
+    "pexels-johan-de-beer-5476413.jpg",
+    "saturn-rings.jpg",
+    "pexels-pixabay-2150.jpg",
+    "pexels-pixabay-41951.jpg",
+    "pexels-robert-gruszecki-11657224.jpg",
+    "pexels-spacex-23793.jpg",
+    "pexels-jeremy-müller-11101908.jpg",
+    "pexels-scott-lord-16880954.jpg",
+    "pexels-stefan-stefancik-91216.jpg",
+    "pexels-scott-lord-16880956.jpg"
+]
 
-</div>
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
 
-<div class="search-blocking-curten"></div>
-<div class="search-curten"></div>
+// Call the shuffle function
+shuffleArray(imageNameArray);
+console.log(imageNameArray)
 
-<div class="search-results-div">
-    <div class="search-results-upper">
-        <h3 class="search-input-value"></h3>
-        <!-- <hr /> -->
-    </div>
-    <div class="search-results-middle"></div>
-    <div class="search-results-lower">
-        <p>Move to the main search functionality to view your search in more detail, <a href="browseTheApi.html">here</a> .</p>
-        <button class="search-results-close-btn">close</button>
-    </div>
-</div>
-        <footer></footer>
-    </main>
-</body>
-<script src="scriptJS/index.js"></script>
-</html>
+const slidesContainer = document.querySelector('.img-slides-container')
+const slideImages = document.querySelectorAll('.slide-img')
+
+for(let i= 0; i< 14;i++){
+    slideImages[i].src = `images/openingSlidesImgs/${imageNameArray[i]}`
+}
+
+const animationGapTime = 8000;
+
+function slideShowFunc01(){
+    slideImages[0].style.opacity = '0'
+    slideImages[1].style.opacity = '1'
+    setTimeout(()=>{    
+        slideImages[1].style.opacity = '0';
+        slideImages[2].style.opacity = '1';
+        setTimeout(()=>{
+            slideImages[2].style.opacity = '0';
+            slideImages[3].style.opacity = '1';
+            setTimeout(()=>{
+                slideImages[3].style.opacity = '0';
+                slideImages[4].style.opacity = '1';
+
+                setTimeout(()=>{
+                    slideImages[4].style.opacity = '0';
+                    slideImages[5].style.opacity = '1';
+
+                    setTimeout(()=>{
+                        slideImages[5].style.opacity = '0';
+                        slideImages[6].style.opacity = '1';
+
+                        setTimeout(()=>{
+                            slideImages[6].style.opacity = '0';
+                            slideImages[7].style.opacity = '1';
+                            
+                            setTimeout(()=>{
+                                slideImages[7].style.opacity = '0';
+                                slideImages[8].style.opacity = '1';
+                                
+                                setTimeout(()=>{
+                                    slideImages[8].style.opacity = '0';
+                                    slideImages[9].style.opacity = '1';
+                                    
+                                    setTimeout(()=>{
+                                        slideImages[9].style.opacity = '0';
+                                        slideImages[10].style.opacity = '1';
+
+                                        setTimeout(()=>{
+                                            slideImages[10].style.opacity = '0';
+                                            slideImages[11].style.opacity = '1';
+
+                                            setTimeout(()=>{
+                                                slideImages[11].style.opacity = '0';
+                                                slideImages[12].style.opacity = '1';
+
+                                                setTimeout(()=>{
+                                                    slideImages[12].style.opacity = '0';
+                                                    slideImages[13].style.opacity = '1';
+
+                                                    setTimeout(()=>{
+                                                        slideImages[13].style.opacity = '0';
+                                                        slideImages[0].style.opacity = '1';
+                                                        console.log('cicle done')
+                                                    }, animationGapTime)
+                                                    setTimeout(completeSlideShow, animationGapTime)
+
+                                                }, animationGapTime)
+                                            }, animationGapTime)
+                                        }, animationGapTime)
+                                    }, animationGapTime)
+                                }, animationGapTime)
+                            }, animationGapTime)
+                        }, animationGapTime)
+                    }, animationGapTime)
+                }, animationGapTime)
+            }, animationGapTime)
+
+//Next update renew the images
+        }, animationGapTime)
+    }, animationGapTime
+    )
+}
+function completeSlideShow(){
+    setTimeout(slideShowFunc01, animationGapTime)
+}
+completeSlideShow()
+
+// [...]
+
+
+// [AMBIENCE SOUND]
+const musicPlayBtn = document.querySelector('.music-play-btn')
+const musicPauseBtn = document.querySelector('.music-pause-btn')
+
+let backgroundAudio = document.querySelector('#bg-audio')
+
+let volumeDegree = 0.05
+backgroundAudio.volume = volumeDegree
+
+musicPlayBtn.addEventListener('click', ()=>{
+    backgroundAudio.pause()
+    musicPlayBtn.style.display = 'none'
+    musicPauseBtn.style.display = "inline"
+})
+musicPauseBtn.addEventListener('click', ()=>{
+    backgroundAudio.play()
+    musicPlayBtn.style.display = 'inline'
+    musicPauseBtn.style.display = "none"
+})
+
+const volumeIncreseBtn = document.querySelector('.inc')
+const volumeDecreseBtn = document.querySelector('.dec')
+const volumeDisplay = document.querySelector('.volume-display')
+
+volumeIncreseBtn.addEventListener('click', ()=>{
+    if(volumeDegree >= 0.96){ volumeDegree = 0.95} 
+    volumeDegree = volumeDegree + 0.05
+    volumeDisplay.textContent =  `${Math.round(volumeDegree * 100)}%`
+    backgroundAudio.volume = volumeDegree
+})
+
+volumeDecreseBtn.addEventListener('click', ()=>{
+    volumeDegree = volumeDegree - 0.05
+    if(volumeDegree < 0){volumeDegree = 0}
+    volumeDisplay.textContent =  `${Math.round(volumeDegree * 100)}%`
+    backgroundAudio.volume = volumeDegree 
+})
+
+// [...]
+
+
+// [NAVBAR SEARCH FUNCTIONLITY]
+
+
+// getting the relative elements
+const searchIcon = document.querySelector('.search-icon')
+const navSearchBar = document.querySelector('.nav-search-bar')
+const searchBlockingCurtne = document.querySelector('.search-blocking-curten')
+const searchCurten = document.querySelector('.search-curten')
+const searchResultsDiv = document.querySelector('.search-results-div')
+const searchResultsCloseBtn = document.querySelector('.search-results-close-btn')
+const searchResultsMiddle = document.querySelector('.search-results-middle')
+
+
+// first function 
+// displays and hides the reults + adjusts the height to 50vh (perhaps remove this later) 
+function searchResultsDisplay(state){
+    searchResultsMiddle.style.height = '50vh'
+    searchBlockingCurtne.style.display = `${state}`
+    searchCurten.style.display = `${state}`
+    searchResultsDiv.style.display = `${state}`
+
+}
+// sec function
+// displays the loading screen, gets the input value, 
+//gives the window the title, calls the data getting function
+// calls the dislpaing function
+function showResults(){
+    searchResultsDiv.style.top = '50%'
+    searchResultsMiddle.innerHTML = `
+    <div class="loading-screen">
+    <div class="inner-wrapper">
+      <div class="loading-circle"></div>
+    <p>Loading</p>
+  </div>
+    `
+
+    let inputContent = navSearchBar.value
+    inputContent = inputContent.trim()
+    inputContent = inputContent.replace(' ', '-')
+    if(inputContent == ''){return alert('Empty attempt search.\nPlease type before searching')}
+    
+    searchResultsDisplay('block')
+
+    document.querySelector('html').addEventListener('keydown', function(event){
+        if(event.key === 'Escape'){
+            closingFunc()
+        }
+    })
+    getData(inputContent)
+}
+
+// third function
+// gets the data from the api
+// calls the update dom function
+function getData(factor){
+    const apiUrl = `https://images-api.nasa.gov/search?q=${factor}`
+
+fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+        totalItems = (data.collection.items).length
+        updateDOM(data);
+    })
+    .catch(error => {
+        console.error('Error fetching data from NASA API:', error);
+        return alert('Something went wrong.\nCheck your internet connection')
+    });
+
+// fourth function
+// returns or not the data, if no data says so and adjusts the height 
+// else calls the data structuing function
+function updateDOM(data) {
+    if((data.collection.items).length === 0 ){
+        searchResultsMiddle.innerHTML = `<p class="no-results">No results were found </p>`
+        searchResultsMiddle.style.height = '15vh'
+    }else{
+        structuringData(data)
+    }
+}    
+}
+
+// fifth function
+// structurs the data to html
+function structuringData(data){
+    let sample = ''
+    try{
+    for(let i = 0; i < (data.collection.items).length; i++){
+        sample += `<h2>${data.collection.items[i].data[0].title}</h2>`
+    }
+}catch{}
+searchResultsMiddle.innerHTML = `${sample}`
+}
+
+
+// sisxth function
+// closing function
+function closingFunc(){
+    searchResultsDiv.style.top = '200%'
+    setTimeout(()=>{searchResultsDisplay('none')}, 250)
+}
+
+// first event 
+searchIcon.addEventListener('click', ()=>{showResults()})
+// sec event
+navSearchBar.addEventListener('keydown', function(event){
+    if(event.keyCode === 13){showResults()}})
+// fourth event 
+searchResultsCloseBtn.addEventListener('click', ()=>{
+    closingFunc()
+})
+
+// [...]
+
+
+
+// [TOOLS BACKGROUND IMAGE OF THE DAY]
+const apiKey = 'PCnaFUbdL2cyfZ9dOrSdTzmUCpv8jH7deTK72lpe';
+const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`;
+
+fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+        updateDOM(data);
+    })
+    .catch(error => {
+        
+        console.error('Error fetching data from NASA API:', error);
+    });
+
+function updateDOM(data) {
+
+    const imageContainer = document.querySelector('.tools-bg-img')
+    imageContainer.src = `${data.url}`
+};
+
+// [...]
