@@ -5,16 +5,7 @@ const searchResultsContainter = document.querySelector('.search-results');
 
 input.addEventListener('keypress', function(event){
     if(event.keyCode === 13){
-        searchResultsContainter.innerHTML = `
-        <div class="loading-screen">
-        <div class="inner-wrapper">
-          <div class="loading-circle"></div>
-        <p>Loading</p>
-        <hr />
-      </div>
-        `
         showResults()
-        
     }
 })
 
@@ -26,8 +17,17 @@ const showResults =function(){
     inputContent = input.value
     inputContent = inputContent.trim()
     inputContent = inputContent.replace(' ', '-')
+    if(inputContent == ''){return alert('Empty attempt search.\nPlease type before searching')}
+    else{
+    searchResultsContainter.innerHTML = `
+    <div class="loading-screen">
+    <div class="inner-wrapper">
+      <div class="loading-circle"></div>
+    <p>Loading</p>
+    </div>
+    `
     getData(inputContent);
-    searchResultsContainter.scrollTop = 0;
+    searchResultsContainter.scrollTop = 0;}
 
 }
 
@@ -43,6 +43,7 @@ fetch(apiUrl)
     })
     .catch(error => {
         console.error('Error fetching data from NASA API:', error);
+        return alert('Something went wrong.\nCheck your internet connection')
 
     });
 
