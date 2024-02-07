@@ -49,6 +49,9 @@ document.addEventListener('DOMContentLoaded', function () {
     `
 
         document.querySelector('.full-img-btn').addEventListener('click', ()=>{
+            document.querySelector('html').addEventListener('keydown', function(event){
+                if(event.key = 'Escape'){fullImgSizeContainer.style.display = 'none'}
+            })
             fullImgSizeContainer.style.display = 'block'
         })
         document.querySelector('.x-mark').addEventListener('click', ()=>{
@@ -63,3 +66,19 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 });
+
+// NOTIFICATION FUNCTIONALITY
+
+const notificationContainer = document.querySelector('.notification')
+let randomTic = Math.floor(Math.random()*100)
+console.log(randomTic)
+if(randomTic >= 95){
+    notificationContainer.style.display = 'block'
+    setTimeout(()=>{
+        notificationContainer.style.top = "-12%"
+    }, 15000)
+}
+notificationContainer.addEventListener('click', ()=>{
+    notificationContainer.style.top = "-12%"
+
+})
