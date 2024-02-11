@@ -1,22 +1,48 @@
-    
+const upperWrapper = document.querySelector('.upper-wrapper')
+const upperTitle = document.querySelector('.upper-title')
 const input = document.querySelector('.search-bar')
 const btn  = document.querySelector('.search-btn')
 const searchResultsContainter = document.querySelector('.search-results');
+const prevSearch = document.querySelector('.prev-search')
+
+let searchCounter = 0
+let inputSearches = []
+
+let inputContent
+function getInputContent(){
+    inputContent = input.value
+    inputContent = inputContent.trim()
+    return inputContent = inputContent.replace(' ', '-')
+}
+
 
 input.addEventListener('keypress', function(event){
     if(event.keyCode === 13){
+
         showResults()
     }
 })
 
 btn.addEventListener('click', ()=>{
+
     showResults()
 })
 
 const showResults =function(){
-    inputContent = input.value
-    inputContent = inputContent.trim()
-    inputContent = inputContent.replace(' ', '-')
+    getInputContent()
+    searchCounter++
+    console.log(inputSearches)
+    inputSearches.push(inputContent)
+    if(searchCounter >= 2){
+        prevSearch.style.top = '1%'
+        prevSearch.style.display = 'block'
+    }
+    // 
+    upperTitle.style.fontSize = '3rem'
+    searchResultsContainter.style.top = '55%'
+    upperWrapper.style.top = '15%'
+    // 
+
     if(inputContent == ''){return alert('Empty attempt search.\nPlease type before searching')}
     else{
     searchResultsContainter.innerHTML = `
@@ -134,9 +160,20 @@ const structuringData = function(data){
 
 const openInfoWindow = function(state){
     popInfoWindow.style.display = `${state}`
-}
-
-}
+}}}
 
 
-}
+// position: static;
+// transform: translate(0%, 0%);
+
+//
+prevSearch.addEventListener('click', ()=>{
+    let prevInputSearch = inputSearches[(inputSearches.length) - 2]
+    input.value = prevInputSearch.replace('-', ' ')
+    setTimeout(getData(prevInputSearch), 1000)
+    searchResultsContainter.scrollTop = 0;
+    prevSearch.style.top = '-10%'
+})
+
+
+// future upadate could include recent history search 
