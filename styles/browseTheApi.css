@@ -11,7 +11,7 @@ body{
     width: 100%;
     height: 100%;
     z-index: -1;
-    background-color: rgba(0, 0, 0, 0.836);
+    background-color: rgba(0, 0, 0, 0.9);
 
 }
 .bg-img{
@@ -22,10 +22,25 @@ body{
     object-fit: cover;
     z-index: -2;
 }
-
+.upper-wrapper{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    transition: 200ms;
+    z-index: 1;
+}
+.search-results{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    transition: 200ms;
+    z-index: 0;
+} 
 h2{
     text-align: center;
-    font-size: 3rem;
+    font-size: 3.5rem;
     color: white;
     margin-top: 3rem;
 }
@@ -45,25 +60,29 @@ h2{
     outline: none;
     transition: 250ms;
 }
-.search-bar:focus{
-    /* padding:0.3rem 0.5rem 0 0; */
-    padding:0.5rem 1rem 0.1rem 0.3rem;
-}
+
 .search-btn{
     height: 100%;
     font-size: 1.3rem ;
+    font-weight: bolder;
     padding:0.5rem 1.5rem;
     color: rgb(28, 0, 23);
-    background-color: white;
-    border: solid 3px rgb(255, 255, 255);
+    background-color: rgb(100, 210, 254);
+    border: solid 3px rgb(0, 152, 212);
     border-radius: 10px;
-    box-shadow: inset -4px -4px 10px 1px rgba(28, 0, 23, 0.708);
+    box-shadow: inset -4px -4px 10px 1px rgb(0, 152, 212), inset 4px 4px 10px 1px rgb(0, 152, 212) ;
     transition: 300ms;
+    /* color: rgb(255, 255, 255); */
 }
 .search-btn:hover{
-    background-color: rgba(255, 255, 255, 0.43);
-    color: white;
+    background-color: rgb(255, 255, 255);
+    /* color: white; */
     cursor: pointer;
+    /* box-shadow: inset -4px -4px 10px 1px rgb(255, 255, 255), inset 4px 4px 10px 1px rgb(255, 255, 255)  */
+}
+.search-btn:active{
+    box-shadow: inset -4px -4px 10px 1px rgb(255, 255, 255), inset 4px 4px 10px 1px rgb(255, 255, 255) 
+    
 }
 .search-results{
     overflow-y: auto;
@@ -123,16 +142,11 @@ h2{
     transition: 250ms;
 }
 .search-sample button:hover{
-    background-color: rgb(255, 255, 255);
-    color: red;
+    background-color: rgb(155, 0, 0);
+    border-color: rgb(155, 0, 0);
     cursor: pointer;
 }
 .search-sample-img{
-    /* width: 5rem; */
-    /* height: 5rem; */
-    /* position: relative; */
-    /* top:0; */
-    /* margin: 0.5rem 1rem; */
     width: 100%;
     height: 11rem; 
     border: solid 3px white;
@@ -149,12 +163,23 @@ h2{
     font-size: 3rem;
     /* text-align: center; */
     margin: 10rem auto 0 auto ;
-    border-bottom: solid 1px white;
+    border: solid 1px white;
     width: fit-content;
-    padding: 0 4rem 2rem 4rem;
+    padding: 2rem 4rem;
     /* transition: 300ms; */
-    animation: appearing 0.4s ease-in forwards;
+    animation: appearing 0.4s ease-in forwards, alerting 1.5s linear infinite;
     color: rgb(234, 2, 2);
+}
+@keyframes alerting {
+    0%{
+        border-color: white;
+    }
+    50%{
+        border-color: rgb(234, 2, 2);
+    }
+    100%{
+        border-color: white;
+    }
 }
 @keyframes appearing {
     0%{
@@ -167,21 +192,6 @@ h2{
 
 
 .pop-info-window{
-    /* position: fixed;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-    width: calc(100vw - 6vw);
-    height: 100vh;
-    border: none;
-    border-right: solid 3vw white;
-    border-left: solid 3vw white;
-    background-color: rgba(0, 0, 0, 0.98);
-    display: none;
-    z-index: 3;
-    color: white;
-    overflow-y: auto;
-    animation: appearing 200ms ease-in forwards */
     width: calc(100vw - 6vw);
     height:100vh;
     background: linear-gradient(120deg, black, rgb(24, 24, 24), rgb(0, 0, 0));
@@ -234,14 +244,6 @@ h2{
     margin: 0 auto 2rem auto;
 }
 .pop-info-window .x-mark-04{
-    /* filter: invert(100%);
-    position: fixed;
-    top: 0%;
-    right: 0;
-    width: 2.5rem;
-    height: 2.5rem;
-    padding: 0.5rem;
-    transition: 300ms; */
     position: fixed; 
     top: 0%;
     z-index: 21;
@@ -262,26 +264,6 @@ h2{
 .pop-info-window a:visited, .pop-info-window a:after{
     color: rgb(243, 141, 254)
 }
-/* .pending-dots-container{
-    border:solid rgb(0, 255, 255) 1px;
-    display: flex;
-    justify-content: space-between;
-    width: 25%;
-    margin: 12rem auto 0 auto;
-}
-.dot{
-    width: 4rem;
-    height: 4rem;
-    border:solid rgb(255, 0, 191) 10px;
-    background-color: blue;
-    border-radius: 50%;
-} */
-
-
-
-  /*  */
-
-
   
 /* variables */
 :root{
@@ -333,3 +315,26 @@ h2{
   }
   
   /* circle's shadow element */
+  .prev-search{
+    position: fixed;
+    top: 2%;
+    left: 1%;
+    font-size: 1.2rem;
+    padding: 0.2rem 1.3rem;
+    outline: none;
+    background-color: rgb(40, 40, 40);
+    border: 3px solid rgb(40, 40, 40);
+    color: white;
+    animation: appearing 0.75s linear forwards;
+    transition: 500ms;
+    cursor: pointer;
+    display:  none;
+  }
+  .prev-search:hover{
+    background-color: rgb(68, 68, 68);
+    border-color: rgb(68, 68, 68);
+  }
+  .prev-search:active{
+    background-color: black;
+    border-color: black;
+  }
