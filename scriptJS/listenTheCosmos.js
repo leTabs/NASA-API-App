@@ -108,8 +108,12 @@ for(let z = 0; z < audioDescription.length ; z++){
         document.querySelector('.text-desc-xmark').addEventListener('click', ()=>{
            openingClosingDescriptionFunc('none', 0)
         })
-// 
-        openingClosingDescriptionFunc('block', 40) 
+        document.querySelector('html').addEventListener('keydown', function(event){
+            if(event.key == 'Escape'){
+                openingClosingDescriptionFunc('none', 0)
+            }
+        })
+        openingClosingDescriptionFunc('block', 10) 
         // this blurs this
     })
 }
