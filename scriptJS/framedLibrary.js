@@ -1,10 +1,62 @@
-// document.addEventListener('DOMContentLoaded', function () {
-// const apiKey = 'PCnaFUbdL2cyfZ9dOrSdTzmUCpv8jH7deTK72lpe';
+const optionsMenu = document.querySelector('.options-menu')
+const collectionsWrapper = document.querySelector('.collections-wrapper')
+const doc = document.querySelector('html')
+const openingImg = document.querySelector('.opening-img')
+const openingTextContainer = document.querySelector('.opening-text-container')
 
-// const factor = 'andromeda'
+const themeImagesArray = [
+    "thumbnail-andromeda.jpg",
+    "thumbnail-earth.jpg", 
+    "thumbnail-supernova.jpg",
+    "thumbnail-mercury.jpg",
+    "thumbnail-venus.jpg",
+    "thumbnail-milky-way.jpg",
+    "thumbnail-solar-system.jpg",
+    "thumbnail-black-hole.jpg",
+    "thumbnail-pulsar.jpg",
+    "thumbnail-uranus.jpg",
+]
+const themeTitleArray = [
+    "Andromeda Galaxy", 
+    "Planet Earth",
+    "Nova Explosions",
+    "Planet Mercury",
+    "Planet Venus",
+    "Milky Way Galaxy",
+    "Solar System",
+    "Black Holes",
+    "Pulsars",
+    "Planet Uranus"
+]
+let themeSamples =``
+for(let i = 0; i < themeTitleArray.length; i++){
+    themeSamples += `
+    <div class="theme collection-${i}">
+    <img 
+        src="images/framedLibraryImgs/${themeImagesArray[i]}" 
+        alt="Thumbail Theme Image, ${themeTitleArray[i]}" 
+        class="theme-thumbnail"/>
+    <h3 class="theme-title">${themeTitleArray[i]}</h3>
+    </div>
+    `
+}
+optionsMenu.innerHTML = `${themeSamples}`
 
+let themeStructure = ``
+for(let i = 0; i < themeTitleArray.length; i++){
+    themeStructure += `
+    <div class="collection-${i}-container coll-container">
+    <img src="images/icons/x-mark.png" alt="x mark, close window" class="x-mark">
+    <h1>${themeTitleArray[i]}</h1>
+    <hr class="collection-hr"/>
+    <section class="collection-${i}-options coll-options">
+    </section>
+    <img src="images/framedLibraryImgs/thumbnail-andromeda.jpg" class="coll-bg-img" />
+    </div>
+    `
+}
+collectionsWrapper.innerHTML = `${themeStructure}`
 const mainFunction = function(factor, collectionNum){
-    // listName = 0
     let apiUrl = `https://images-api.nasa.gov/search?q=${factor}`
     fetch(apiUrl)
     .then(response => response.json())
@@ -16,17 +68,10 @@ const mainFunction = function(factor, collectionNum){
         console.error('Error fetching data from NASA API:', error);
     });
     
-    function updateDOM(data) {
-        // 
-        // 
-        // 
-        // 
-        
+    function updateDOM(data) {        
         let = totalItems = 0
         totalItems = (data.collection.items).length
         let sample = ``
-        // let topLevel = data.collection.items
-        // alert( )
         try{
         for(let i = 0; i < totalItems; i++){
             sample += ` 
@@ -38,13 +83,8 @@ const mainFunction = function(factor, collectionNum){
                 <br />
             </div>
             `
-            // listName ++
-
         }}
         catch{}
-        // alert(listName)
-        // alert((data.collection.items).length)
-        // data = ''
         const collection01 = document.querySelector(`.collection-${collectionNum}-options`);
         collection01.innerHTML = `${sample}`
         }
@@ -88,14 +128,85 @@ const mainFunction = function(factor, collectionNum){
 
 // make a list on each iteration and then use that list's length to add event listener to all the windows
 
-mainFunction('andromeda', 1)
-mainFunction('planet-earth', 2)
-mainFunction('supernova', 3)
-mainFunction('mercury', 4)
-mainFunction('venus', 5)
-mainFunction('milky-way', 6)
-mainFunction('solar-system', 7)
-mainFunction('black-hole', 8)
-mainFunction('pulsar', 9)
-mainFunction('uranus', 10)
+
 // });
+
+
+
+function themeElements(){
+    
+// theme elements
+
+
+
+
+const bluringFunction  = function(opacityDegree, blurDegree, focusedElement, state){
+    // openingImg.style.filter = `blur(${blurDegree}px)`
+    openingImg.style.opacity = opacityDegree
+    openingTextContainer.style.filter = `blur(${blurDegree}px)`
+    optionsMenu.style.filter = `blur(${blurDegree}px)`
+
+    focusedElement.style.filter = 'blur(0px)'
+    focusedElement.style.display= `${state}`
+
+    }
+
+    const allInfoFrames =  document.querySelectorAll('.coll-container')
+   
+    for(let i = 0; i < allInfoFrames.length ; i++){
+        // alert(i+1)
+        document.querySelector(`.collection-${i}`).addEventListener('click', ()=>{
+            bluringFunction('0.8',20,
+            document.querySelector(`.collection-${i}-container`) , 
+            'block')
+        })
+    }
+
+    const closeBtn = document.querySelectorAll('.x-mark');
+
+    for(let i = 0; i<closeBtn.length ; i++){
+        console.log(closeBtn[i], i)
+        closeBtn[i].addEventListener('click', ()=>{
+            bluringFunction('1',0, document.querySelector(`.collection-${i}-container`), 'none')
+        })
+    }
+
+}
+
+themeElements()
+
+
+mainFunction('andromeda', 0)
+mainFunction('planet-earth', 1)
+mainFunction('supernova', 2)
+mainFunction('mercury', 3)
+mainFunction('venus', 4)
+mainFunction('milky-way', 5)
+mainFunction('solar-system', 6)
+mainFunction('black-hole', 7)
+mainFunction('pulsar', 8)
+mainFunction('uranus', 9)
+
+
+const allCollContainers = document.querySelectorAll('.coll-container')
+
+//  document.querySelector('.general-frame-info-container').style.display == 'block'
+//      document.querySelector('.general-frame-info-container').style.display = 'none'
+// 
+function escapeWindowClose(){
+    if(document.querySelector('.general-frame-info-container').style.display == 'block'){
+        document.querySelector('.general-frame-info-container').style.display = 'none'
+    }else{
+        for(let i = 0; i< allCollContainers.length; i++){
+            openingImg.style.opacity = 1
+            openingTextContainer.style.filter = `blur(0)`
+            optionsMenu.style.filter = `blur(0)`
+        
+            // focusedElement.style.filter = 'blur(0px)'
+            allCollContainers[i].style.display= `none`
+    }
+}
+}
+doc.addEventListener('keydown', function(event){
+    if(event.key =='Escape'){escapeWindowClose()}})
+
