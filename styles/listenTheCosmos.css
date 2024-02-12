@@ -11,17 +11,12 @@ body{
     width: 100vw;
     margin: 0;
 }
-.curten, .bg-img{
-    position: absolute;
+.bg-img{
+    position: fixed;
     top: 0;
     width: 100%;
     height: 100%;
-}
-.curten{
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: -1;
-}
-.bg-img{
+    z-index: 1;
     object-fit: cover;
     z-index: -2;
 }
@@ -49,40 +44,41 @@ audio{
 }
 .sound-options{
     width: 75%;
-    height: 45vh;
+    height: 50vh;
     overflow: hidden;
     overflow-y: auto;
     padding: 0.5rem 1.5rem;
     margin: 2rem auto;
-    border: solid 10px white;
-    border-radius: 15px;
     animation: appearing-02 0.5s linear forwards;
+    z-index: 0;
+    /* background: linear-gradient(120deg, rgba(13, 13, 13, 0.7), rgba(29, 29, 29, 0.7)); */
+    box-shadow: 5px 5px 30px black, -5px -5px 10px black;
+
 }
+
 @keyframes appearing-02 {
     0%{opacity: 0}
     100%{opacity: 1;}
     
 }
 .small-div{
-    border-bottom: solid white 5px;
+    border: solid white 1px;
     height: 5rem;
     width: 100%;
     margin: 2rem auto;
+    z-index: 10
 }
 .bg-div-inner{
-    /* border: solid 1px red; */
     height: 5rem;
     width: 100%;
     object-fit: cover;
-    z-index: -1;
     position: relative;
     top: 0;
-    z-index: -2;
+    z-index: 0;
 }
 /* .bg-div-inner img */
 .bg-div-inner img, .text-desc-bg img{
     object-fit: cover;
-    /* z-index: -2; */
     width: 100%;
     height: 100%
 }
@@ -123,7 +119,7 @@ audio{
     max-height: 80vh;
     /* padding: 2rem 4rem; */
     border: solid 10px rgb(255, 255, 255);
-    border-radius: 15px;
+    /* border-radius: 15px; */
     /* background-color: rgb(0, 0, 0); */
     display: none;
     animation: appearing 0.25s ease-in forwards;
@@ -143,8 +139,8 @@ audio{
     position: absolute;
     width: 100%;
     height: 100%;
-    z-index: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 .text-desc-xmark{
     position: fixed;
