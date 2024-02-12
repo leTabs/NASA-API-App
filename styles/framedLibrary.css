@@ -223,7 +223,6 @@ html{
     height: 2.5rem;
     background-color: rgb(255, 255, 255);
     transition: 300ms;
-    border-radius: 0 0 0 15px;
 }
 
 .general-frame-info-container{
@@ -287,21 +286,4 @@ html{
     transition: 300ms;
     /* border-radius: 0 0 0 15px; */
     z-index: 50;
-}
-
-
-
-.tool-bar{
-    background-color: var(--info-border-color);
-    height: 3rem;
-    border-radius: 15px;
-    width: 35%;
-    margin: 0 auto;
-    /* position: absolute; */
-    /* transform: translate(-50%, -50%); */
-    /* top: 25%;
-    left: 25%; */
-    /* height: 5rem; */
-    /* left: 50%; */
-    /* z-index:100; */
 }
