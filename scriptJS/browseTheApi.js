@@ -3,7 +3,8 @@ const upperTitle = document.querySelector('.upper-title')
 const input = document.querySelector('.search-bar')
 const btn  = document.querySelector('.search-btn')
 const searchResultsContainter = document.querySelector('.search-results');
-const prevSearch = document.querySelector('.prev-search')
+const prevSearch = document.querySelector('.recent-search-history')
+const prevSearchDiv = document.querySelector('.recent-search-history-div')
 
 let searchCounter = 0
 let inputSearches = []
@@ -29,11 +30,15 @@ btn.addEventListener('click', ()=>{
 })
 
 const showResults =function(){
+    prevSearchDiv.style.left = '-40%'
     getInputContent()
     searchCounter++
-    console.log(inputSearches)
-    inputSearches.push(inputContent)
-    if(searchCounter >= 2){
+
+
+
+
+
+    if(searchCounter >= 1){
         prevSearch.style.top = '1%'
         prevSearch.style.display = 'block'
     }
@@ -42,7 +47,17 @@ const showResults =function(){
     searchResultsContainter.style.top = '55%'
     upperWrapper.style.top = '15%'
     // 
-
+    for(let i = 0; i < inputSearches.length; i++){
+        if(inputContent == inputSearches[i]){
+           // return
+        }
+        else{
+            // alt
+        }
+        
+    }
+    inputSearches.push(inputContent)
+    // 
     if(inputContent == ''){return alert('Empty attempt search.\nPlease type before searching')}
     else{
     searchResultsContainter.innerHTML = `
@@ -56,6 +71,55 @@ const showResults =function(){
     searchResultsContainter.scrollTop = 0;}
 
 }
+
+prevSearch.addEventListener('click', ()=>{
+    let prevSearchesElements = ``
+    for(let i = 0; i < inputSearches.length; i++){
+        prevSearchesElements += `
+            <p class="history-search">${inputSearches[i].replace('-', ' ')}<p>
+        `
+    }
+    prevSearchesElements += `<button class="recent-searches-close-btn">close</button>`
+    prevSearchDiv.innerHTML = `
+    <h4>Latest Searches</h4>
+    <div class="searches-wrapper">
+        ${prevSearchesElements}
+    </div>`
+    searchResultsContainter.scrollTop = 0;
+    prevSearch.style.top = '-10%'
+    // setTimeout(historyElementsFunc(), 1000)
+    historyElementsFunc()        
+    prevSearchDiv.style.left = '1%' 
+    prevSearchDiv.style.display = 'block'
+})
+
+function historyElementsFunc(){
+    const allPrevSearches = document.querySelectorAll('.history-search')
+    const recentSearchesCloseBtn = document.querySelector('.recent-searches-close-btn')
+    prevSearchDiv.style.display = 'block'
+    for(let i = 0; i < allPrevSearches.length; i++){
+        // alert(allPrevSearches[i].textContent)
+
+        allPrevSearches[i].addEventListener('click', ()=>{
+            prevSearch.style.top = '1%'
+            prevSearchDiv.style.left = '-40%'
+
+        let prevInputSearch = allPrevSearches[i].textContent
+        input.value = prevInputSearch.replace('-', ' ')
+        setTimeout(getData(prevInputSearch), 1000)
+        
+
+        })
+    }
+    recentSearchesCloseBtn.addEventListener('click', ()=>{
+        // prevSearchDiv.style.display = 'none'    
+    prevSearchDiv.style.left = '-40%' 
+    // prevSearchDiv.style.display = 'block'
+    prevSearch.style.top = '1%'
+    })
+}
+
+
 
 const getData = function(factor){
     
@@ -152,6 +216,11 @@ const structuringData = function(data){
 
 
                 document.querySelector('.x-mark-04').addEventListener('click', ()=>{openInfoWindow('none')})
+                document.querySelector('html').addEventListener('keydown', function(event){
+                    if(event.key == 'Escape'){
+                        openInfoWindow('none')
+                    }
+                })
                 openInfoWindow('block')
                 
             })
@@ -162,18 +231,8 @@ const openInfoWindow = function(state){
     popInfoWindow.style.display = `${state}`
 }}}
 
-
-// position: static;
-// transform: translate(0%, 0%);
-
 //
-prevSearch.addEventListener('click', ()=>{
-    let prevInputSearch = inputSearches[(inputSearches.length) - 2]
-    input.value = prevInputSearch.replace('-', ' ')
-    setTimeout(getData(prevInputSearch), 1000)
-    searchResultsContainter.scrollTop = 0;
-    prevSearch.style.top = '-10%'
-})
+
 
 
 // future upadate could include recent history search 
