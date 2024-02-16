@@ -266,7 +266,7 @@ searchResultsMiddle.innerHTML = `${sample}`
 // closing function
 function closingFunc(){
     searchResultsDiv.style.top = '200%'
-    setTimeout(()=>{searchResultsDisplay('none')}, 250)
+    setTimeout(()=>{searchResultsDisplay('none', 'auto')}, 250)
 }
 
 // first event 
@@ -304,3 +304,23 @@ function updateDOM(data) {
 };
 
 // [...]
+
+
+// nav
+
+const navigatorsList = document.querySelectorAll('.navigator-p')
+const navDesticationsList = [
+    document.querySelector('#home'),
+    document.querySelector('#about'),
+    document.querySelector('#tools')
+]
+
+for(let i = 0; i < (navigatorsList.length); i++){
+    navigatorsList[i].addEventListener('click', ()=>{
+        navDesticationsList[i].scrollIntoView()
+    })
+}
+console.log(navigatorsList)
+document.querySelector('.triangle').addEventListener('click', ()=>{
+    navDesticationsList[0].scrollIntoView()
+})
