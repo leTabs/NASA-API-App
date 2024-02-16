@@ -5,29 +5,49 @@ const openingImg = document.querySelector('.opening-img')
 const openingTextContainer = document.querySelector('.opening-text-container')
 
 const themeImagesArray = [
-    "thumbnail-andromeda.jpg",
-    "thumbnail-earth.jpg", 
-    "thumbnail-supernova.jpg",
-    "thumbnail-mercury.jpg",
-    "thumbnail-venus.jpg",
-    "thumbnail-milky-way.jpg",
-    "thumbnail-solar-system.jpg",
-    "thumbnail-black-hole.jpg",
-    "thumbnail-pulsar.jpg",
-    "thumbnail-uranus.jpg",
+    "thm-solar-system.jpg",
+    "thm-mercury.jpg",
+    "thm-venus.jpg",
+    "thm-earth.jpg",
+    "thm-lunar.jpg",
+    "thm-mars.jpg",
+    "thm-jupiter.jpg",
+    "thm-saturn.jpg",
+    "thm-uranus.jpg",
+    "thm-neptune.jpg",
+    "thm-sun.jpg",
+    "thm-pluto.jpg",
+    "thm-milky-way.jpg",
+    "thm-andromeda.jpg",
+    "thm-meteor.jpg",
+    "thm-black-hole.jpg",
+    "thm-nebula.jpg",
+    "thm-supernova.jpg"
 ]
 const themeTitleArray = [
-    "Andromeda Galaxy", 
-    "Planet Earth",
-    "Nova Explosions",
+    "Solar System",
     "Planet Mercury",
     "Planet Venus",
+    "Planet Earth",
+    "Moon",
+    "Planet Mars",
+    "Planet Jupiter",
+    "Planet Saturn",
+    "Planet Uranus",
+    "Planet Neptune",
+    "Sun",
+    "Pluto",
     "Milky Way Galaxy",
-    "Solar System",
+    "Andromeda",
+    "Meteors",
     "Black Holes",
-    "Pulsars",
-    "Planet Uranus"
+    "Nebula",
+    "Supernova"
 ]
+
+
+// 
+
 let themeSamples =``
 for(let i = 0; i < themeTitleArray.length; i++){
     themeSamples += `
@@ -51,7 +71,7 @@ for(let i = 0; i < themeTitleArray.length; i++){
     <hr class="collection-hr"/>
     <section class="collection-${i}-options coll-options">
     </section>
-    <img src="images/framedLibraryImgs/thumbnail-andromeda.jpg" class="coll-bg-img" />
+    <img src="images/framedLibraryImgs/sec-bg-img.jpg" class="coll-bg-img" />
     </div>
     `
 }
@@ -176,16 +196,6 @@ const bluringFunction  = function(opacityDegree, blurDegree, focusedElement, sta
 themeElements()
 
 
-mainFunction('andromeda', 0)
-mainFunction('planet-earth', 1)
-mainFunction('supernova', 2)
-mainFunction('mercury', 3)
-mainFunction('venus', 4)
-mainFunction('milky-way', 5)
-mainFunction('solar-system', 6)
-mainFunction('black-hole', 7)
-mainFunction('pulsar', 8)
-mainFunction('uranus', 9)
 
 
 const allCollContainers = document.querySelectorAll('.coll-container')
@@ -210,3 +220,23 @@ function escapeWindowClose(){
 doc.addEventListener('keydown', function(event){
     if(event.key =='Escape'){escapeWindowClose()}})
 
+
+
+mainFunction('solar-system', 0)
+mainFunction('mercury', 1)
+mainFunction('venus', 2)
+mainFunction('planet-earth', 3)
+mainFunction('lunar', 4)
+mainFunction('planet-mars', 5)
+mainFunction('jupiter', 6)
+mainFunction('saturn', 7)
+mainFunction('uranus', 8)
+mainFunction('planet-neptune', 9)
+mainFunction('sun', 10)
+mainFunction('pluto', 11)
+mainFunction('milky-way', 12)
+mainFunction('andromeda', 13)
+mainFunction('meteor', 14)
+mainFunction('black-hole', 15)
+mainFunction('nebula', 16)
+mainFunction('supernova', 17)
