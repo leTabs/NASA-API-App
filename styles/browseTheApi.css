@@ -315,7 +315,7 @@ h2{
   }
   
   /* circle's shadow element */
-  .prev-search{
+.recent-search-history, .recent-search-history-div{
     position: fixed;
     top: 2%;
     left: 1%;
@@ -327,14 +327,81 @@ h2{
     color: white;
     animation: appearing 0.75s linear forwards;
     transition: 500ms;
-    cursor: pointer;
     display:  none;
   }
-  .prev-search:hover{
+  .recent-search-history-div{
+    padding: 1rem 0.3rem 0.5rem 0.3rem;
+    text-align: center;
+    text-align: left;
+    z-index: 10000000;
+    max-width: 25vw;
+    overflow: hidden;
+  }
+  .recent-search-history-div p{
+    margin: 0;
+    margin-top: 0.1rem;
+  }
+  .recent-search-history-div h4{
+    margin: 0;
+    margin-bottom: 1rem;
+    padding: 0;
+    text-align: center;
+    font-size: 1.3rem;
+    text-decoration: underline;
+  }
+  .searches-wrapper{
+    width: 100%;
+    overflow: auto;
+    
+    max-height: 80vh;
+  }
+  .history-search{
+    padding:0.2rem 0.7rem;
+    border-left: solid 2px rgba(0, 0, 0, 0.5);
+    border-right: solid 2px rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.35);
+    transition: 250ms;
+    cursor: pointer;
+  }
+  .history-search:hover{
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5),-10px -10px 30px rgba(0, 0, 0, 0.5);
+  }
+  .recent-search-history-div button{
+    width: 80%;
+    font-size: 1.2rem;
+    border: solid 3px white;
+    background-color: white;
+    display: block;
+    margin: 1.5rem auto 0.2rem auto;
+    cursor: pointer;
+    transition: 250ms;
+}
+  .recent-search-history-div button:hover{
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.5), inset -4px -4px 10px rgba(0, 0, 0, 0.5);
+  }
+  .recent-search-history:hover{
     background-color: rgb(68, 68, 68);
     border-color: rgb(68, 68, 68);
+    cursor: pointer;
   }
-  .prev-search:active{
+  .recent-search-history:active{
     background-color: black;
     border-color: black;
   }
+
+  
+::-webkit-scrollbar{
+    background-color: rgb(39, 39, 39);
+    border: solid 1px rgb(0, 128, 96);
+    width: 10px;
+}
+::-webkit-scrollbar-button{
+    height: 0;
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgb(0, 128, 96);
+    border: solid 1px white;
+    border-radius: 20px;
+}
