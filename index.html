@@ -13,17 +13,19 @@
             <input type="text" placeholder="Search" class="nav-search-bar"/>
         </span>
         <span class="nav-destinations">
-            <p><a href="#home" class="nav-anchor">Home</a></p>
-            <p><a href="#about" class="nav-anchor">About</a></p>
-            <p><a href="#tools" class="nav-anchor">Tools</a></p>
-            <p><a href="something" class="nav-anchor">Documentation</a></p>
+            <!-- i had anchors here instead of p, change/delete the css a  -->
+            <p class="navigator-p">Home</p>
+            <p class="navigator-p">About</p>
+            <p class="navigator-p">Tools</p>
+            <p><a class="nav-anchor" href="">Documentation</a></p>
         </span>
     </nav>
     <main>
         <section class="opening" id="home">
             <div class="text-container">
-                <h1>Discover <br />the Cosmos </h1>
+                <h1 class="temph1">Discover <br />the Cosmos </h1>
                 <p>Triverse the page to discover everythinover <br />everythinover everything</p>
+                <!-- turn it into a scroll to view  -->
                 <a href="#about"><button>Continue</button></a>
             </div>
             <div class="img-slides-container">
@@ -51,7 +53,8 @@
             <h3>What is all About</h3>
             <p>
                 Welcome to [Your Page Name], where the wonders of the universe come to life. Immerse yourself in a cosmic journey filled with educational insights, captivating visuals, and the latest discoveries. Our mission is to fuel your curiosity and deepen your understanding of the cosmos. Join us on this exploration of the extraordinary, where knowledge meets awe, and the mysteries of the universe unfold before your eyes.</p>
-            <a href="#tools"><button class="about-continue-btn">Continue</button></a>
+            <!-- turn it into a scroll to view  -->
+                <a href="#tools"><button class="about-continue-btn">Continue</button></a>
             </section>
 
         <section class="available-tools" id="tools">
@@ -85,8 +88,9 @@
                 <p class="small-description">Search specific information from NASA's API</p>
                 <p class="small-description">Discover today's special Image</p>
                 <p class="small-description">Discover today's special Image</p>
+                
+                <p class="triangle"></p>
             </div>
-
         </section>
 <div class="bg-music-div">
     <audio id="bg-audio" loop>
@@ -115,8 +119,11 @@
         <p>Move to the main search functionality to view your search in more detail, <a href="browseTheApi.html">here</a> .</p>
         <button class="search-results-close-btn">close</button>
     </div>
+    
 </div>
+<!-- triangle scroll top -->
         <footer>
+            
             <p>Learn about the universe.</p>
             <p>Created by <a href="https://github.com/leTabs">letabs</a></p>
         </footer>
