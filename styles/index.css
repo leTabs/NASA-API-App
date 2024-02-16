@@ -88,14 +88,16 @@ body, main, html{
 }
 .nav-destinations p{
     display: inline;
+    cursor: pointer;
     margin: 1rem  5%;
+    transition: 300ms; 
 }
 .nav-anchor, .nav-anchor:visited{
     color: rgb(255, 255, 255);
     text-decoration: none;
     transition: 300ms;
 }
-.nav-anchor:hover, .nav-anchor:visited:hover{
+.nav-destinations p:hover, .nav-anchor:hover{
     color: rgba(118, 255, 255, 0.773);
 }
 .nav-anchor:active, .nav-anchor:visited:active{
@@ -291,7 +293,7 @@ body, main, html{
     width: 90%;
     margin: 0 auto;
     /* padding: 0 3rem; */
-    padding-bottom: 3.5rem ;
+    padding-bottom: 1rem ;
     top: -185%;
     font-size: 2rem;
     z-index: 3;
@@ -320,8 +322,9 @@ body, main, html{
 }
 .all-tools div:hover{
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.25);
-    box-shadow: inset 5px 5px 25px rgb(255, 255, 255), inset -5px -5px 25px rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.108);
+    box-shadow: inset 5px 5px 35px rgba(255, 255, 255, 0.7), 
+    inset -5px -5px 35px rgba(255, 255, 255, 0.7);
     /* filter: invert(100%); */
     
 }
@@ -529,7 +532,11 @@ body, main, html{
 .search-results-lower a,
 .search-results-lower a:after,
 .search-results-lower a:visited{
+    transition: 250ms;
     color: white;
+}
+.search-results-lower a:hover{
+    color: rgba(118, 255, 255, 0.773);
 }
 .search-results-lower button{
     font-size: 1.2rem;
@@ -634,4 +641,43 @@ footer a:visited,
 footer a:after
 {
     color:  rgb(167, 238, 238);
+}
+
+
+.triangle {
+    width: 0;
+    height: 0;
+    /* border-radius: 15px; */
+    border-left: 1.2rem solid rgba(255, 255, 255, 0); 
+    border-right: 1.2rem solid rgba(255, 255, 255, 0); 
+    border-bottom: 2rem solid rgb(255, 255, 255); 
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    margin-top: 1rem;
+    margin-bottom: 0;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 105%;
+    transition: 250ms;
+    cursor: pointer;
+}
+.triangle:hover{
+    border-bottom-color: rgba(245, 245, 245, 0.649);
+}
+
+
+::-webkit-scrollbar{
+    background-color: rgb(39, 39, 39);
+    border: solid 1px rgb(0, 128, 96);
+    width: 10px;
+    /* border-radius: 20px; */
+}
+::-webkit-scrollbar-button{
+    height: 0;
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgb(0, 128, 96);
+    border: solid 1px white;
+    border-radius: 20px;
+
 }
