@@ -52,8 +52,8 @@ audio{
     animation: appearing-02 0.5s linear forwards;
     z-index: 0;
     /* background: linear-gradient(120deg, rgba(13, 13, 13, 0.7), rgba(29, 29, 29, 0.7)); */
-    box-shadow: 5px 5px 30px black, -5px -5px 10px black;
-
+    box-shadow: 5px 5px 30px rgba(255, 255, 255, 0.15), -5px -5px 10px rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
 }
 
 @keyframes appearing-02 {
@@ -149,6 +149,7 @@ audio{
     background-color: rgb(255, 255, 255);
     width: 2.5rem;
     height: 2.5rem;
+    cursor: pointer;
 }
 .text-desc-xmark:hover{
     background-color: red;
@@ -193,4 +194,20 @@ audio{
     100%{
         transform: translate(-50%, -50%) scale(100%);
     }
+}
+
+
+::-webkit-scrollbar{
+    background-color: rgb(39, 39, 39);
+    border: solid 1px rgb(0, 128, 96);
+    width: 10px;
+}
+::-webkit-scrollbar-button{
+    height: 0;
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgb(0, 128, 96);
+    border: solid 1px white;
+    border-radius: 20px;
+
 }
