@@ -66,12 +66,12 @@ let themeStructure = ``
 for(let i = 0; i < themeTitleArray.length; i++){
     themeStructure += `
     <div class="collection-${i}-container coll-container">
-    <img src="images/icons/x-mark.png" alt="x mark, close window" class="x-mark">
+    <img src="images/icons/x-mark.png" alt="X mark" class="x-mark">
     <h1>${themeTitleArray[i]}</h1>
     <hr class="collection-hr"/>
     <section class="collection-${i}-options coll-options">
     </section>
-    <img src="images/framedLibraryImgs/sec-bg-img.jpg" class="coll-bg-img" />
+    <img src="images/framedLibraryImgs/sec-bg-img.jpg" class="coll-bg-img" alt="Space background image"/>
     </div>
     `
 }
@@ -96,7 +96,7 @@ const mainFunction = function(factor, collectionNum){
         for(let i = 0; i < totalItems; i++){
             sample += ` 
             <div class="sample item-${i}-${factor}">           
-                <img src="${data.collection.items[i].links[0].href}" />
+                <img src="${data.collection.items[i].links[0].href}" alt="Image of interest, thumbnail version"/>
                 <div class="sample-title-wrapper">
                     <h2>${data.collection.items[i].data[0].title}</h2>
                 </div>
@@ -117,11 +117,11 @@ const mainFunction = function(factor, collectionNum){
             document.querySelector(`.item-${z}-${factor}`).addEventListener('click', ()=>{
                 infoFramer.innerHTML = `
                 <div class="andromeda-galaxy-info-window info-window">
-                    <img src="images/icons/x-mark.png" alt="x mark, close window" class="x-mark-02">
+                    <img src="images/icons/x-mark.png" alt="X mark, close window" class="x-mark-02">
                     <h1>${data.collection.items[z].data[0].title}</h1>
         
                     <img src="${data.collection.items[z].links[0].href}" 
-                        alt=""
+                        alt="Image of interest, main version"
                         class="info-select-img" />
                     <div class="tool-bar">
                         
@@ -134,7 +134,9 @@ const mainFunction = function(factor, collectionNum){
         
                 </div> 
                 `
+                console.log(data.collection.items[z].links[0].href)
                 infoFramer.style.display = 'block'
+                infoFramer.scrollTop = 0
                 document.querySelector('.x-mark-02').addEventListener('click', ()=>{
                     infoFramer.style.display = 'none'
                 })
@@ -185,7 +187,6 @@ const bluringFunction  = function(opacityDegree, blurDegree, focusedElement, sta
     const closeBtn = document.querySelectorAll('.x-mark');
 
     for(let i = 0; i<closeBtn.length ; i++){
-        console.log(closeBtn[i], i)
         closeBtn[i].addEventListener('click', ()=>{
             bluringFunction('1',0, document.querySelector(`.collection-${i}-container`), 'none')
         })
