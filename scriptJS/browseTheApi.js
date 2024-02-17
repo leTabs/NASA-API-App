@@ -8,6 +8,7 @@ const prevSearchDiv = document.querySelector('.recent-search-history-div')
 
 let searchCounter = 0
 let inputSearches = []
+// let searchState = false
 
 let inputContent
 function getInputContent(){
@@ -15,17 +16,37 @@ function getInputContent(){
     inputContent = inputContent.trim()
     return inputContent = inputContent.replace(' ', '-')
 }
+function st(){
+    if(inputContent == ''){return alert('Empty attempt search.\nPlease type before searching')}
+    else{
+    searchResultsContainter.innerHTML = `
+        <div class="loading-screen">
+        <div class="inner-wrapper">
+        <div class="loading-circle"></div>
+        <p>Loading</p>
+        </div>
+    `
+    getData(inputContent);
+    searchResultsContainter.scrollTop = 0;
 
+    // 
+    // 
+    // 
+    document.querySelector('html').addEventListener('keydown', function(event){
+        if(event.key == 'Escape'){
+            prevSearchDiv.style.left = '-40%' 
+            prevSearch.style.top = '1%'
+        }
+    })
+}}
 
 input.addEventListener('keypress', function(event){
     if(event.keyCode === 13){
-
         showResults()
     }
 })
 
 btn.addEventListener('click', ()=>{
-
     showResults()
 })
 
@@ -33,10 +54,6 @@ const showResults =function(){
     prevSearchDiv.style.left = '-40%'
     getInputContent()
     searchCounter++
-
-
-
-
 
     if(searchCounter >= 1){
         prevSearch.style.top = '1%'
@@ -49,28 +66,15 @@ const showResults =function(){
     // 
     for(let i = 0; i < inputSearches.length; i++){
         if(inputContent == inputSearches[i]){
-           // return
+           alert('already searched it')
+        //    searchState = true
+        return st()
         }
-        else{
-            // alt
-        }
-        
     }
-    inputSearches.push(inputContent)
     // 
-    if(inputContent == ''){return alert('Empty attempt search.\nPlease type before searching')}
-    else{
-    searchResultsContainter.innerHTML = `
-    <div class="loading-screen">
-    <div class="inner-wrapper">
-      <div class="loading-circle"></div>
-    <p>Loading</p>
-    </div>
-    `
-    getData(inputContent);
-    searchResultsContainter.scrollTop = 0;}
-
-}
+    // if(searchState){inputSearches.push(inputContent)}
+    inputSearches.push(inputContent)
+    st()}
 
 prevSearch.addEventListener('click', ()=>{
     let prevSearchesElements = ``
@@ -85,7 +89,7 @@ prevSearch.addEventListener('click', ()=>{
     <div class="searches-wrapper">
         ${prevSearchesElements}
     </div>`
-    searchResultsContainter.scrollTop = 0;
+    
     prevSearch.style.top = '-10%'
     // setTimeout(historyElementsFunc(), 1000)
     historyElementsFunc()        
@@ -106,6 +110,7 @@ function historyElementsFunc(){
 
         let prevInputSearch = allPrevSearches[i].textContent
         input.value = prevInputSearch.replace('-', ' ')
+        searchResultsContainter.scrollTop = 0;
         setTimeout(getData(prevInputSearch), 1000)
         
 
@@ -165,8 +170,8 @@ const structuringData = function(data){
         sample += `
         <div class="search-sample">
             <div class="search-img-btn-wrapper">
-                <img class="search-sample-img" src=${data.collection.items[i].links[0].href}
-                alt="Info Image, Couldn't Load" />
+                <img class="search-sample-img" src="${data.collection.items[i].links[0].href}"
+                alt="Image of interest, thumbnail version" />
             </div>
             <div class="search-text-wrapper">
                 <h1 class="search-sample-title">${data.collection.items[i].data[0].title}</h1>
@@ -180,7 +185,8 @@ const structuringData = function(data){
             </div>
         </div>
         `
-    }
+        console.log(data.collection.items[i].links[0].href)
+    }   
 
 }catch{}
 
@@ -205,13 +211,13 @@ const structuringData = function(data){
                 popContent =`
                     <h2>${data.collection.items[j].data[0].title}</h2>
                     <p>${data.collection.items[j].data[0].description}</p>
-                    <img src="${data.collection.items[j].links[0].href}" class="current-img"/>
+                    <img src="${data.collection.items[j].links[0].href}" class="current-img" alt="Image of interest, main version"/>
                     <hr />
                     <p>${data.collection.items[j].data[0].date_created}</p>
                     <hr />
                 `
 
-                popContent += `<img src="images/icons/x-mark.png" class="x-mark-04"/>`
+                popContent += `<img src="images/icons/x-mark.png" class="x-mark-04" alt="X mark"/>`
                 popInfoWindow.innerHTML = `${popContent}`
 
 
@@ -219,9 +225,13 @@ const structuringData = function(data){
                 document.querySelector('html').addEventListener('keydown', function(event){
                     if(event.key == 'Escape'){
                         openInfoWindow('none')
+                        prevSearchDiv.style.left = '-40%' 
+                        // prevSearchDiv.style.display = 'block'
+                        prevSearch.style.top = '1%'
                     }
                 })
                 openInfoWindow('block')
+                popInfoWindow.scrollTop = 0;
                 
             })
         }
