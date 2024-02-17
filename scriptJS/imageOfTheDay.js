@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <hr />
         </div>
         <div class="img-wrapper">
-            <img class="today-img"src=${data.url} />
+            <img class="today-img"src=${data.url} alt="Image of interest, small version"/>
             <button class="full-img-btn">View Original Sized Image </button>
         </div>
             `;
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const fullImgSizeContainer = document.querySelector('.full-img-size-container')
         fullImgSizeContainer.innerHTML += `
         <h3>${data.title}</h3>
-        <img src="${data.url}" class="original-sized-img"/>
+        <img src="${data.url}" class="original-sized-img" alt="Image of interest, Original size version"/>
         <hr />
     `
 
@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if(event.key = 'Escape'){fullImgSizeContainer.style.display = 'none'}
             })
             fullImgSizeContainer.style.display = 'block'
+            fullImgSizeContainer.scrollTop = 0;
         })
         document.querySelector('.x-mark').addEventListener('click', ()=>{
             fullImgSizeContainer.style.display = 'none'
@@ -62,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const pageBackground = document.querySelector('.page-background')
         pageBackground.innerHTML +=    `
-        <img src="${data.url}" class="bg-img" />`
+        <img src="${data.url}" class="bg-img" alt="Image of the Day, background version"/>`
     }
 
 });
