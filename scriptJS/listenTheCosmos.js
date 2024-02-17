@@ -58,7 +58,7 @@ for(let i = 0; i < audioTitle.length; i++){
     <div class="small-div">
         <div class="bg-div-inner">
             <div class="curten-inner"></div>
-            <img src="images/listenTheCosmosImgs/${audioBgImg[i]}" alt="R Aquarii Image" />
+            <img src="images/listenTheCosmosImgs/${audioBgImg[i]}" alt="${audioTitle[i]}, background version audio" />
         </div>
         <div class="text-audio-content">
             <h3>${audioTitle[i]}</h3>
@@ -82,7 +82,7 @@ const openingClosingDescriptionFunc = function(state, blurDegree){
     if(state == 'block'){inverseState = 'none'}
     else{inverseState = 'block'} 
     audioMainContainer.style.display = `${inverseState}`
-    
+    audioTextDescriptionContainer.scrollTop = 0;
 }
 
 
@@ -96,9 +96,12 @@ for(let z = 0; z < audioDescription.length ; z++){
         
         <div class="text-desc-bg">
             <div class="curten-inner-2"></div>
-            <img src="images/listenTheCosmosImgs/${audioBgImg[z]}" class="audio-text-desc-img" alt=""/>
+            <img 
+                src="images/listenTheCosmosImgs/${audioBgImg[z]}" 
+                class="audio-text-desc-img"
+                alt="${audioTitle[z]}, background version text"/>
         </div>
-        <img src="images/icons/x-mark.png" class="text-desc-xmark" alt=""/>
+        <img src="images/icons/x-mark.png" class="text-desc-xmark" alt="X mark"/>
         <div class="audio-text-discription-wrapper">
             <h3>${audioTitle[z]}</h3>
             <hr />
