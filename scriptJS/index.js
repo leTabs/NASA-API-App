@@ -2,6 +2,12 @@
 const allTools = document.querySelectorAll('.tool')
 const allDescriptions = document.querySelectorAll('.small-description')
 
+
+document.querySelector('html').scrollTop = 0
+
+
+
+
 allTools[0].addEventListener('click', ()=>{window.location = 'framedLibrary.html'})
 allTools[1].addEventListener('click', ()=>{window.location = 'browseTheApi.html'})
 allTools[2].addEventListener('click', ()=>{window.location = 'imageOfTheDay.html'})
@@ -324,3 +330,5 @@ console.log(navigatorsList)
 document.querySelector('.triangle').addEventListener('click', ()=>{
     navDesticationsList[0].scrollIntoView()
 })
+document.querySelector('.continue-btn-01').addEventListener('click', ()=>{navDesticationsList[1].scrollIntoView()})
+document.querySelector('.continue-btn-02').addEventListener('click', ()=>{navDesticationsList[2].scrollIntoView()})
